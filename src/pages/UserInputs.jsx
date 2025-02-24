@@ -1,7 +1,7 @@
-const UserInput = () => {
+const UserInputs = () => {
   <>
     <div></div>
   </>;
 };
 
-export default UserInput;
+export default UserInputs;
