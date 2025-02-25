@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import CategoryFilter from "../components/CategoryFilter";
 
 const ProductPage = () => {
   const [products, setProducts] = useState([]);
@@ -29,7 +30,6 @@ const ProductPage = () => {
     fetchProducts();
   }, []);
 
-  // Funktion för att filtrera produkter efter kategori
   const filterByCategory = (category) => {
     setSelectedCategory(category);
     if (category === "all") {
@@ -41,7 +41,6 @@ const ProductPage = () => {
     }
   };
 
-  // Funktion för att sortera produkter efter pris
   const handleSortChange = (event) => {
     const order = event.target.value;
     setSortOrder(order);
@@ -58,42 +57,27 @@ const ProductPage = () => {
 
   return (
     <div>
-      {/* Kategorilänkar */}
       <div className="header">
-        <div className="category-div">
-          <a onClick={() => filterByCategory("all")}>ALL</a>
-          <a onClick={() => filterByCategory("women's clothing")}>WOMENS</a>
-          <a onClick={() => filterByCategory("men's clothing")}>MENS</a>
-          <a onClick={() => filterByCategory("jewelery")}>ACCESSORIES</a>
-        </div>
-
-        {/* Dropdown för sortering */}
-        <div className="dropdown">
-          <select
-            id="sort-select"
-            onChange={handleSortChange}
-            value={sortOrder}
-          >
-            <option value="">Sortera efter pris</option>
-            <option value="low-to-high">Lägsta till högsta</option>
-            <option value="high-to-low">Högsta till lägsta</option>
-          </select>
-        </div>
+        <CategoryFilter
+          selectedCategory={selectedCategory}
+          onCategoryClick={filterByCategory}
+        />
+        <SortDropdown sortOrder={sortOrder} onSortChange={handleSortChange} />
       </div>
-
-      {/* Produkter */}
-      <div className="product-container">
-        {filteredProducts.map((product) => (
-          <div key={product.id} className="product-card">
-            <img
-              src={product.image}
-              alt={product.title}
-              className="product-image"
-            />
-            <p className="product-title">{product.title}</p>
-            <p className="product-price">{product.price} SEK</p>
-          </div>
-        ))}
+      <div>
+        <div className="product-container">
+          {filteredProducts.map((product) => (
+            <div key={product.id} className="product-card">
+              <img
+                src={product.image}
+                alt={product.title}
+                className="product-image"
+              />
+              <p className="product-title">{product.title}</p>
+              <p className="product-price">{product.price} SEK</p>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
