@@ -5,12 +5,15 @@ body {
   width: 100%;
   box-sizing: border-box;
 }
+.header {
+  width: 100%;
+}
 
 .product-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 25px;
-  width: 90vw;
+  width: 85vw;
   margin-top: 2em;
 }
 
@@ -92,29 +95,53 @@ body {
 }
 
 @media (max-width: 768px) {
+  * {
+    font-size: large;
+  }
+
   .product-container {
     grid-template-columns: repeat(2, 1fr);
-    width: 100vw;
+    width: 100%;
     margin-top: 1.5em;
+    padding: 0 5vw;
   }
 
   .product-card {
-    max-width: 180px;
-    height: 280px;
+    max-width: 160px;
+    height: 260px;
+    width: 100%;
   }
 
   .product-image {
-    height: 120px;
+    height: 110px;
+  }
+
+  .category-div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    width: 100%;
+    padding: 0 10px;
   }
 
   .category-div .category {
-    padding: 5px 15px;
+    padding: 5px 10px;
+    width: auto;
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .dropdown {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 0 10px;
   }
 
   .dropdown select {
-    font-size: 12px;
-    padding: 6px 20px;
-    width: 120px;
+    font-size: 14px;
+    max-width: 90%;
     margin-top: 1.5em;
   }
 }
