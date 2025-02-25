@@ -1,37 +1,51 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import "../ProductPage.css";
 
 const ProductPage = () => {
-  const [products, setProducts] = useState([]);
+  const [product, setProduct] = useState(null);
+  const [addedToCart, setAddedToCart] = useState(false);
 
   useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const response = await fetch("https://fakestoreapi.com/products");
-        if (!response.ok) {
-          throw new Error(`Something went wrong: ${response.status}`);
-        }
-        const data = await response.json();
-        setProducts(data);
-        console.log(data);
-      } catch (error) {
-        console.error("Could not fetch products", error);
-      }
-    };
-
-    fetchProducts();
+    fetch("https://fakestoreapi.com/products/1")
+      .then((response) => response.json())
+      .then((data) => {
+        setProduct(data);
+      })
+      .catch((error) => {
+        console.error("Fel vid hämtning av produkt:", error);
+      });
   }, []);
 
+  const handleAddToCart = () => {
+    setAddedToCart(true);
+    console.log("Produkt tillagd i varukorgen!");
+  };
+
+  const handleGoBack = () => {
+    window.history.back();
+  };
+
+  if (!product) {
+    return <div>Laddar produkt...</div>;
+  }
+
   return (
-    <div>
-      <h1>Produkter</h1>
-      <div>
-        {products.map((product) => (
-          <div key={product.id}>
-            <h2>{product.title}</h2>
-            <img src={product.image} alt={product.title} width="100" />
-            <p>{product.price} USD</p>
-          </div>
-        ))}
+    <div className="productPage">
+      <button className="goBackButton" onClick={handleGoBack}>
+        &lt; Gå tillbaka
+      </button>
+
+      <div className="productImage">
+        <img src={product.image} alt={product.title} /> {}
+      </div>
+
+      <div className="productInfo">
+        <h1>{product.title}</h1>
+        <p>{product.description}</p>
+        <h3>{product.price} SEK</h3>
+        <button className="ShopButton" onClick={handleAddToCart}>
+          {addedToCart ? "Tillagd i varukorgen" : "Lägg till i varukorg +"}
+        </button>
       </div>
     </div>
   );
