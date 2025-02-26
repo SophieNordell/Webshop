@@ -35,7 +35,7 @@ const Cart = ({ setCartCount }) => {
   };
 
   const totalSum = cart.reduce(
-    (sum, item) => sum + item.price * item.quantity,
+    (sum, item) => sum + parseFloat(item.price) * item.quantity,
     0
   );
 
