@@ -1,0 +1,146 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.product-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+  width: 85vw;
+  margin-top: 2em;
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 230px;
+  height: 330px;
+  border-radius: 8px;
+  background-color: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.product-image {
+  width: 80%;
+  height: 60%;
+  object-fit: contain;
+  margin-bottom: 5px;
+  padding: 20px;
+  border: 2px solid rgb(247, 244, 244);
+  border-radius: 8px;
+}
+
+.product-title {
+  font-size: 1em;
+  margin: 10px 0;
+  height: 40px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 90%;
+}
+
+.product-price {
+  font-size: 12px;
+  color: #333;
+  font-weight: bold;
+}
+
+.category-div {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.category-div .category {
+  padding: 5px 40px;
+  cursor: pointer;
+  border-radius: 4px;
+  background-color: #eae5dc;
+  transition: background-color 0.3s ease;
+}
+
+.category-div .category.active {
+  background-color: #ba3656;
+  color: white;
+}
+
+.dropdown {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 2em;
+}
+
+.dropdown select {
+  font-size: 14px;
+  padding: 8px 30px;
+  background-color: #eae5dc;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  margin-top: 3em;
+}
+
+@media (max-width: 768px) {
+  .product-title,
+  .product-price,
+  .dropdown select {
+    font-size: 1rem;
+  }
+
+  .product-container {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    width: 100%;
+    margin-top: 1.5em;
+    padding: 0 5vw;
+  }
+
+  .product-card {
+    max-width: 160px;
+    height: 260px;
+    width: 100%;
+  }
+
+  .product-image {
+    height: 200px;
+  }
+
+  .category-div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    justify-content: center;
+    width: 100%;
+    padding: 15px;
+  }
+
+  .category-div .category {
+    padding: 5px 10px;
+    width: auto;
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .dropdown {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 0 10px;
+  }
+
+  .dropdown select {
+    font-size: 14px;
+    width: auto;
+    max-width: 90%;
+    margin-top: 1.5em;
+    padding: 8px 12px;
+  }
+}

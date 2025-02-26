@@ -1,0 +1,68 @@
+.confirmation {
+  background-color: #ece9e9;
+  border-radius: 8px;
+  padding: 20px;
+  width: 100%;
+  max-width: 600px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+}
+
+.confirmation h3 {
+  color: #333;
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.confirmation p {
+  font-size: 1.1em;
+  color: #555;
+}
+
+.confirmation-card ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.confirmation-card li {
+  background-color: #f9f9f9;
+  padding: 15px;
+  margin-bottom: 12px;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.confirmation-card li img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  margin-right: 15px;
+  border-radius: 5px;
+}
+
+.confirmation-card li .left-text {
+  flex: 1;
+  text-align: left;
+}
+
+.confirmation-card li .right-text {
+  text-align: right;
+}
+
+.confirmation-card li .name {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.confirmation-card li .quantity,
+.confirmation-card li .price {
+  font-size: 0.95em;
+}
+
+.confirmation-card li .price {
+  color: #333;
+  font-weight: bold;
+}
