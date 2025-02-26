@@ -43,15 +43,6 @@ const Cart = ({ setCartCount }) => {
     setCart((prevCart) => prevCart.filter((item) => item.id !== id));
   };
 
-  const handleCheckout = () => {
-    navigate("/confirmation", { state: { cart } });
-    localStorage.removeItem("cartProducts");
-    setCart([]);
-    if (setCartCount) {
-      setCartCount(0);
-    }
-  };
-
   return (
     <div>
       <h1>Varukorg</h1>
@@ -105,11 +96,6 @@ const Cart = ({ setCartCount }) => {
           <Link className="greyButton" to="/">
             Fortsätt handla
           </Link>
-          {cart.length > 0 && (
-            <button className="redButton" onClick={handleCheckout}>
-              Slutför köp
-            </button>
-          )}
         </div>
       </div>
     </div>
