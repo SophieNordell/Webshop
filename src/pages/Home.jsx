@@ -1,7 +1,41 @@
+import { Link } from "react-router-dom";
+import womenswear from "../images/womenswear.jpg";
+import menswear from "../images/menswear.jpg";
+import accessories from "../images/accessories.png";
+import "../Home.css";
+
 const Home = () => {
   return (
     <>
-      <div>home</div>
+      <div className="homepage-div">
+        <Link to="/" className="womens-wear-div">
+          <img
+            className="womens-wear-img"
+            src={womenswear}
+            alt="Damkläder som hänger på en ställning."
+          />
+          <div className="womens-wear-text">Dam</div>
+        </Link>
+
+        <div className="mens-accessories-div">
+          <Link to="/" className="mens-wear-div">
+            <img
+              className="mens-wear-img"
+              src={menswear}
+              alt="Ung man iklädd en grå luvtröja."
+            />
+            <div className="mens-wear-text">Herr</div>
+          </Link>
+          <Link to="/" className="accessories-div">
+            <img
+              className="accessories-img"
+              src={accessories}
+              alt="Ung kvinna med en blå ryggsäck på ryggen."
+            />
+            <div className="accessories-text">Accessoarer</div>
+          </Link>
+        </div>
+      </div>
     </>
   );
 };
