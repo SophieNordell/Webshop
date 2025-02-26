@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../Cart.css";
 
 const Cart = ({ setCartCount }) => {
@@ -7,7 +7,6 @@ const Cart = ({ setCartCount }) => {
     const savedCart = localStorage.getItem("cartProducts");
     return savedCart ? JSON.parse(savedCart) : [];
   });
-  const navigate = useNavigate();
 
   useEffect(() => {
     localStorage.setItem("cartProducts", JSON.stringify(cart));
@@ -91,10 +90,14 @@ const Cart = ({ setCartCount }) => {
         </div>
       )}
       <div className="cartFooter">
-        <div class="totalAmount">Totalt: {totalSum} SEK</div>
+        <div className="totalAmount">Totalt: {totalSum} SEK</div>
         <div className="cartNav">
           <Link className="greyButton" to="/">
             Fortsätt handla
+          </Link>
+
+          <Link className="redButton" to="/Userinputs">
+            Gå vidare
           </Link>
         </div>
       </div>
