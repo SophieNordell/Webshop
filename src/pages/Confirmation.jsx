@@ -26,7 +26,7 @@ const Confirmation = ({ customerName, items = [], total }) => {
           </ul>
         </div>
 
-        <p>Total: {total} USD</p>
+        <p>Total: {total} SEK</p>
       </div>
     </>
   );
