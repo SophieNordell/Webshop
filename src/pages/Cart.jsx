@@ -8,7 +8,6 @@ const Cart = ({ setCartCount }) => {
       const savedCart = localStorage.getItem("cart");
       const parsedCart = savedCart ? JSON.parse(savedCart) : [];
 
-      // Säkerställ att price är ett nummer direkt när vi hämtar varukorgen
       return parsedCart.map((item) => ({
         ...item,
         price: isNaN(parseFloat(item.price)) ? 0 : parseFloat(item.price),
