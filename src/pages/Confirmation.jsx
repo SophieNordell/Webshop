@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import "/src/confirmation.css";
 
 const Confirmation = ({ customerName, items = [], total }) => {
   const [orderNumber, setOrderNumber] = useState("");
@@ -25,7 +26,7 @@ const Confirmation = ({ customerName, items = [], total }) => {
           </ul>
         </div>
 
-        <p>Total: {total} USD</p>
+        <p>Total: {total} SEK</p>
       </div>
     </>
   );
