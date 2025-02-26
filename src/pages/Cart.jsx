@@ -6,7 +6,14 @@ const Cart = ({ setCartCount }) => {
   const [cart, setCart] = useState(() => {
     try {
       const savedCart = localStorage.getItem("cart");
-      return savedCart ? JSON.parse(savedCart) : [];
+      const parsedCart = savedCart ? JSON.parse(savedCart) : [];
+
+      // Säkerställ att price är ett nummer direkt när vi hämtar varukorgen
+      return parsedCart.map((item) => ({
+        ...item,
+        price: isNaN(parseFloat(item.price)) ? 0 : parseFloat(item.price),
+        quantity: item.quantity || 1,
+      }));
     } catch (error) {
       console.error("Error reading cart from localStorage", error);
       return [];
@@ -42,6 +49,7 @@ const Cart = ({ setCartCount }) => {
     const price = parseFloat(item.price);
     return sum + (isNaN(price) ? 0 : price) * item.quantity;
   }, 0);
+
   const removeItem = (id) => {
     setCart((prevCart) => prevCart.filter((item) => item.id !== id));
   };
