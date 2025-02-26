@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { useState, useEffect } from "react";
 import "../ProductPage.css";
 
@@ -50,10 +49,6 @@ const ProductPage = () => {
       </div>
     </div>
   );
-=======
-const ProductPage = () => {
-  return <div></div>;
->>>>>>> main
 };
 
 export default ProductPage;
