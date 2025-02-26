@@ -89,6 +89,102 @@
   margin-top: 3em;
 }
 
+.add-to-cart-button {
+  background: #d94a6e;
+  color: white;
+  border: none;
+  padding: 6px 8px;
+  margin-top: 8px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0px 4px 10px rgba(217, 74, 110, 0.3);
+}
+
+.add-to-cart-button:hover {
+  background: #ba3656;
+  box-shadow: 0px 4px 15px rgba(186, 54, 86, 0.5);
+  transform: scale(1.05);
+}
+
+.add-to-cart-button:active {
+  background: #a02c48;
+  transform: scale(0.98);
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal-content h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.modal-content p {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.modal-content button {
+  background: green;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  margin: 5px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s ease-in-out;
+}
+
+.modal-content button:hover {
+  background: lightgreen;
+}
+
+.modal-content button:first-of-type {
+  background: #ba3656;
+}
+
+.modal-content button:first-of-type:hover {
+  background: #d94a6e;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 @media (max-width: 768px) {
   .product-title,
   .product-price,
