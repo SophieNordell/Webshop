@@ -8,7 +8,6 @@ import Home from "./pages/Home";
 import Products from "./pages/products";
 import Button from "./components/Button";
 import Navbar from "./components/Navbar";
-import "./confirmation.css";
 import { Routes, Route } from "react-router-dom";
 
 const App = () => {
