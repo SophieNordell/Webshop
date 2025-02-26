@@ -71,59 +71,27 @@ const ProductPage = () => {
 
   const handleProductClick = (product) => {
     console.log("Selected product:", product);
-    localStorage.setItem("selectedProduct", JSON.stringify(product));
-  };
 
-  // CART TAR EMOT LOCALSTORAGE FRÅN MIN PRODUCTS.
-  /* 
-  import { useEffect, useState } from "react";
+    const savedCart = JSON.parse(localStorage.getItem("cartProducts")) || [];
 
-const Cart = () => {
-  const [cartProducts, setCartProducts] = useState([]);
-
-  useEffect(() => {
-    const savedProduct = localStorage.getItem("selectedProduct");
-    if (savedProduct) {
-      // Om det finns produkter i localStorage, hämta och sätt dem i state
-      setCartProducts([JSON.parse(savedProduct)]);
-    }
-  }, []);
-
-  const handleRemoveProduct = (productToRemove) => {
-    // Ta bort produkten från cartProducts
-    setCartProducts((prevProducts) =>
-      prevProducts.filter((product) => product.id !== productToRemove.id)
+    const existingProductIndex = savedCart.findIndex(
+      (item) => item.id === product.id
     );
-    // Ta bort produkten från localStorage
-    localStorage.removeItem("selectedProduct");
+
+    if (existingProductIndex !== -1) {
+      savedCart[existingProductIndex].quantity += 1;
+      console.log(
+        `Increased quantity for ${product.title}. New quantity: ${savedCart[existingProductIndex].quantity}`
+      );
+    } else {
+      savedCart.push({ ...product, quantity: 1 });
+      console.log(`Added new product: ${product.title}`);
+    }
+
+    localStorage.setItem("cartProducts", JSON.stringify(savedCart));
+
+    console.log("Updated cart in localStorage:", savedCart);
   };
-
-  return (
-    <div>
-      <h1>Your Cart</h1>
-      {cartProducts.length > 0 ? (
-        <div>
-          {cartProducts.map((product) => (
-            <div key={product.id} className="cart-item">
-              <img src={product.image} alt={product.title} className="cart-item-image" />
-              <p>{product.title}</p>
-              <p>{product.price} SEK</p>
-              <button onClick={() => handleRemoveProduct(product)}>
-                Remove from cart
-              </button>
-            </div>
-          ))}
-        </div>
-      ) : (
-        <p>Your cart is empty</p>
-      )}
-    </div>
-  );
-};
-
-export default Cart; */
-
-  // 1 .FIXA ROUTES OCH ROUTE I APP IST FÖR ATT VISA ALLA NU NÄR NAVBAR ÄR KLAR
 
   return (
     <div>
