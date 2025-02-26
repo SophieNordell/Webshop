@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import "/src/confirmation.css";
 
 const Confirmation = ({ customerName, items = [], total }) => {
   const [orderNumber, setOrderNumber] = useState("");
