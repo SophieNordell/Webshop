@@ -72,7 +72,7 @@ const ProductPage = () => {
   const handleProductClick = (product) => {
     console.log("Selected product:", product);
 
-    const savedCart = JSON.parse(localStorage.getItem("cartProducts")) || [];
+    const savedCart = JSON.parse(localStorage.getItem("cart")) || [];
 
     const existingProductIndex = savedCart.findIndex(
       (item) => item.id === product.id
@@ -88,7 +88,7 @@ const ProductPage = () => {
       console.log(`Added new product: ${product.title}`);
     }
 
-    localStorage.setItem("cartProducts", JSON.stringify(savedCart));
+    localStorage.setItem("Cart", JSON.stringify(savedCart));
 
     console.log("Updated cart in localStorage:", savedCart);
   };
