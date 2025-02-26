@@ -3,7 +3,7 @@ import ProductPage from "./pages/ProductPage";
 import UserInputs from "./pages/UserInputs";
 import Cart from "./pages/Cart";
 import Confirmation from "./pages/Confirmation";
-import ProductCard from "./components/productCard";
+import ProductCard from "./components/ProductCard";
 import Home from "./pages/Home";
 import Products from "./pages/products";
 import Button from "./components/Button";

@@ -26,6 +26,7 @@ h1 {
 .productImage,
 .counterButton {
   background: #eae5dc;
+  border: none;
 }
 
 .productImage {
@@ -66,6 +67,12 @@ h1 {
 .cartNav {
   display: flex;
   justify-content: end;
+}
+
+.cartNav button {
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
 }
 
 .greyButton {
