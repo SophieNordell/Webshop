@@ -4,12 +4,12 @@ import "../Cart.css";
 
 const Cart = ({ setCartCount }) => {
   const [cart, setCart] = useState(() => {
-    const savedCart = localStorage.getItem("cartProducts");
+    const savedCart = localStorage.getItem("cart");
     return savedCart ? JSON.parse(savedCart) : [];
   });
 
   useEffect(() => {
-    localStorage.setItem("cartProducts", JSON.stringify(cart));
+    localStorage.setItem("cart", JSON.stringify(cart));
     if (setCartCount) {
       setCartCount(cart.length);
     }
