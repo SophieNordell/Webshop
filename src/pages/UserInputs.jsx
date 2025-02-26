@@ -1,15 +1,15 @@
 import { useState } from "react";
-import { useNavigate } from 'react-router-dom';
-import "/src/UserInputs.css"
+import { useNavigate } from "react-router-dom";
+import "/src/UserInputs.css";
 
 const UserInputs = ({ onSubmit = () => {} }) => {
   const navigate = useNavigate();
-  const [formData, setFormData] = useState ({
+  const [formData, setFormData] = useState({
     name: "",
     email: "",
     address: "",
     postalCode: "",
-    city: ""
+    city: "",
   });
 
   const handleChange = (e) => {
@@ -20,11 +20,11 @@ const UserInputs = ({ onSubmit = () => {} }) => {
     e.preventDefault();
     console.log("Form submitted, navigating to confirmation");
     onSubmit(formData);
-    navigate('/confirmation', { state: { customerData: formData } });
+    navigate("/confirmation", { state: { customerData: formData } });
   };
 
   const handleContinueShopping = () => {
-    navigate('/products');
+    navigate("/products");
   };
 
   return (
@@ -80,19 +80,23 @@ const UserInputs = ({ onSubmit = () => {} }) => {
         value={formData.city}
         onChange={handleChange}
       />
-   
 
       <div className="user-inputs-footer">
-
         <p>Totalt SEK</p>
 
         <div className="button-container">
-          <button type="button" className="return-button" onClick={handleContinueShopping}>Fortsätt handla</button>
-          <button type="submit" className="continue-button">Gå vidare</button>
+          <button
+            type="button"
+            className="return-button"
+            onClick={handleContinueShopping}
+          >
+            Fortsätt handla
+          </button>
+          <button type="submit" className="continue-button">
+            Gå vidare
+          </button>
         </div>
-
       </div>
-
     </form>
   );
 };
