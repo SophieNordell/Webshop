@@ -17,9 +17,6 @@ const Footer = () => {
           <li>
             <a href="">Tele</a>
           </li>
-          <li>
-            <a href="">Fax</a>
-          </li>
         </ul>
       </div>
 
@@ -31,9 +28,6 @@ const Footer = () => {
           </li>
           <li>
             <a href="">Facebook</a>
-          </li>
-          <li>
-            <a href="">LinkedIn</a>
           </li>
         </ul>
       </div>
