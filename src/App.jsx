@@ -7,8 +7,9 @@ import ProductCard from "./components/ProductCard";
 import Home from "./pages/Home";
 import Products from "./pages/Products";
 import Navbar from "./components/Navbar";
-import "./confirmation.css";
-import { Routes, Route } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
+import Footer from "./components/Footer";
+
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
         <Route path="/confirmation" element={<Confirmation />} />
         <Route path="/cart" element={<Cart />} />
       </Routes>
+      <Footer />
     </>
   );
 };

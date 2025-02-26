@@ -1,12 +1,16 @@
 import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import CategoryFilter from "../components/CategoryFilter";
 import SortDropdown from "../components/SortDropdown";
 import ProductList from "../components/ProductList";
 
 const ProductPage = () => {
+  const location = useLocation();
+  const initialCategory = location.state?.category || "all";
+
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [selectedCategory, setSelectedCategory] = useState(initialCategory);
   const [sortOrder, setSortOrder] = useState("");
 
   useEffect(() => {
@@ -21,16 +25,24 @@ const ProductPage = () => {
         const filteredData = data.filter(
           (product) => product.category !== "electronics"
         );
-
         setProducts(filteredData);
-        setFilteredProducts(filteredData);
+
+        if (initialCategory === "all") {
+          setFilteredProducts(filteredData);
+        } else {
+          setFilteredProducts(
+            filteredData.filter(
+              (product) => product.category === initialCategory
+            )
+          );
+        }
       } catch (error) {
         console.error("Could not fetch products", error);
       }
     };
 
     fetchProducts();
-  }, []);
+  }, [initialCategory]);
 
   const filterByCategory = (category) => {
     setSelectedCategory(category);
