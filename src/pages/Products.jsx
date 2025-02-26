@@ -59,10 +59,27 @@ const ProductPage = () => {
 
   const handleProductClick = (product) => {
     console.log("Selected product:", product);
-    localStorage.setItem("selectedProduct", JSON.stringify(product));
-  };
 
-  // 1 .FIXA ROUTES OCH ROUTE I APP IST FÖR ATT VISA ALLA NU NÄR NAVBAR ÄR KLAR
+    const savedCart = JSON.parse(localStorage.getItem("cartProducts")) || [];
+
+    const existingProductIndex = savedCart.findIndex(
+      (item) => item.id === product.id
+    );
+
+    if (existingProductIndex !== -1) {
+      savedCart[existingProductIndex].quantity += 1;
+      console.log(
+        `Increased quantity for ${product.title}. New quantity: ${savedCart[existingProductIndex].quantity}`
+      );
+    } else {
+      savedCart.push({ ...product, quantity: 1 });
+      console.log(`Added new product: ${product.title}`);
+    }
+
+    localStorage.setItem("cartProducts", JSON.stringify(savedCart));
+
+    console.log("Updated cart in localStorage:", savedCart);
+  };
 
   return (
     <div>
