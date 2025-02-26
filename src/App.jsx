@@ -7,11 +7,7 @@ import ProductCard from "./components/productCard";
 import Home from "./pages/Home";
 import Products from "./pages/products";
 import Navbar from "./components/Navbar";
-
 import { Routes, Route } from "react-router-dom";
-
-
-
 
 const App = () => {
   return (

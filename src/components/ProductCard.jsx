@@ -5,6 +5,7 @@ const ProductCard = ({ title, price, image }) => {
     <div className="product-card">
       <img src={image} alt={title} className="product-image" />
       <p className="product-price">{price} SEK</p>
+      <button>Lägg till </button>
     </div>
   );
 };
