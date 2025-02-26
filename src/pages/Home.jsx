@@ -8,7 +8,11 @@ const Home = () => {
   return (
     <>
       <div className="homepage-div">
-        <Link to="/" className="womens-wear-div">
+        <Link
+          to="/products"
+          state={{ category: "women's clothing" }}
+          className="womens-wear-div"
+        >
           <img
             className="womens-wear-img"
             src={womenswear}
@@ -18,7 +22,11 @@ const Home = () => {
         </Link>
 
         <div className="mens-accessories-div">
-          <Link to="/" className="mens-wear-div">
+          <Link
+            to="/products"
+            state={{ category: "men's clothing" }}
+            className="mens-wear-div"
+          >
             <img
               className="mens-wear-img"
               src={menswear}
@@ -26,7 +34,11 @@ const Home = () => {
             />
             <div className="mens-wear-text">Herr</div>
           </Link>
-          <Link to="/" className="accessories-div">
+          <Link
+            to="/products"
+            state={{ category: "jewelery" }}
+            className="accessories-div"
+          >
             <img
               className="accessories-img"
               src={accessories}

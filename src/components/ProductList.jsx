@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Modal from "./Modal";
+import Modal from "./modal";
 
 const ProductList = ({ products }) => {
   const [showModal, setShowModal] = useState(false);
