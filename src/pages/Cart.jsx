@@ -61,7 +61,7 @@ const Cart = ({ setCartCount }) => {
                 >
                   <h3>{item.title}</h3>
                 </Link>
-                <span className="price">{item.price} SEK</span>
+                <span className="price">{item.price} USD</span>
               </div>
               <div className="productCounter">
                 <button
