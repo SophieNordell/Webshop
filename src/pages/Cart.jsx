@@ -46,7 +46,7 @@ const Cart = ({ setCartCount }) => {
     <div>
       <h1>Varukorg</h1>
       {cart.length === 0 ? (
-        <p>Varukorgen är tom</p>
+        <p>Varukorgen är tomas</p>
       ) : (
         <div className="cartWrap">
           {cart.map((item) => (
