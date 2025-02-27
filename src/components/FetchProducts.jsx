@@ -22,10 +22,8 @@ const FetchProducts = (initialCategory = "all") => {
           .map((product) => {
             let priceSEK = Math.round(product.price * exchangeRate);
 
-            // Ta reda på vad entalet är
             const lastDigit = priceSEK % 10;
 
-            // Om entalet är 5 eller högre, sätt till 9, annars till 0
             const roundedPrice =
               lastDigit >= 5
                 ? Math.floor(priceSEK / 10) * 10 + 9
