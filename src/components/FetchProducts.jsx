@@ -19,11 +19,22 @@ const FetchProducts = (initialCategory = "all") => {
         const data = await response.json();
         const filteredData = data
           .filter((product) => product.category !== "electronics")
-          .map((product) => ({
-            ...product,
-            price: Math.round(product.price * exchangeRate),
-            currency: "SEK",
-          }));
+          .map((product) => {
+            let priceSEK = Math.round(product.price * exchangeRate);
+
+            const lastDigit = priceSEK % 10;
+
+            const roundedPrice =
+              lastDigit >= 5
+                ? Math.floor(priceSEK / 10) * 10 + 9
+                : Math.floor(priceSEK / 10) * 10;
+
+            return {
+              ...product,
+              price: roundedPrice,
+              currency: "SEK",
+            };
+          });
 
         setProducts(filteredData);
 
