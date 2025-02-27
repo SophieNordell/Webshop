@@ -3,7 +3,7 @@ import "../Navbar.css";
 import logo from "../images/mangosteen-logo.png";
 import cart from "../images/cart-icon.png";
 
-const Navbar = () => {
+const Navbar = ({ cartCount }) => {
   return (
     <header>
       <div className="nav-div">
@@ -15,10 +15,10 @@ const Navbar = () => {
         <div className="nav-links">
           <Link to="/">HEM</Link>
           <Link to="/Products">PRODUKTER</Link>
-          <div className="">
+          <div>
             <Link to="/Cart" className="cart-button">
               <img src={cart} alt="Varukorg-ikon" className="cart-icon" />
-              <p className="cart-number">{"X"}</p>
+              <p className="cart-number">{cartCount}</p>
             </Link>
           </div>
         </div>

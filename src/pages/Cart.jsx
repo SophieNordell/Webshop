@@ -21,8 +21,11 @@ const Cart = ({ setCartCount }) => {
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
+
+  useEffect(() => {
     if (setCartCount) {
-      setCartCount(cart.length);
+      setCartCount(cart.reduce((acc, item) => acc + item.quantity, 0));
     }
   }, [cart, setCartCount]);
 
