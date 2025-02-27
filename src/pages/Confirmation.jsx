@@ -1,27 +1,24 @@
 import { useState, useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom"; // Lägg till useNavigate
+import { useLocation, useNavigate } from "react-router-dom";
 import "/src/confirmation.css";
 
 const Confirmation = () => {
   const location = useLocation();
-  const navigate = useNavigate(); // Använd useNavigate
+  const navigate = useNavigate();
   const { customerData } = location.state || {};
 
   const [cart, setCart] = useState([]);
   const [orderNumber, setOrderNumber] = useState("");
 
   const handleCheckout = () => {
-    localStorage.removeItem("cart"); // Rensar varukorgen från localStorage
-    setCart([]); // Tömmer varukorgen i state
-    navigate("/"); // Navigerar tillbaka till startsidan
+    localStorage.removeItem("cart");
+    navigate("/");
   };
 
   useEffect(() => {
-    // Generera ordernummer
     const randomOrderNumber = Math.floor(100000 + Math.random() * 900000);
     setOrderNumber(randomOrderNumber);
 
-    // Hämta varukorg från `location.state` eller `localStorage`
     if (location.state?.cart) {
       setCart(location.state.cart);
     } else {
