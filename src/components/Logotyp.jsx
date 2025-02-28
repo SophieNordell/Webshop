@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Logotyp = () => {
   return (
-    <div className="img-div">
+    <div className="logo-div">
       <Link to="/">
         <img src={logo} alt="Mangosteen logotyp" />
       </Link>
