@@ -14,6 +14,11 @@ h1 {
 .cartWrap {
   max-width: 1000px;
   margin: auto;
+  width: 100%;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .cartProduct {
   display: flex;
@@ -93,6 +98,10 @@ h1 {
   border-radius: 5px;
 }
 
+.greyButton:hover {
+  text-decoration: none;
+}
+
 .redButton {
   background: #ba3656;
   color: #fff;
@@ -101,6 +110,10 @@ h1 {
   text-decoration: none;
   padding: 0.5rem 1rem;
   border-radius: 5px;
+}
+.redButton:hover {
+  color: #e8c0ca;
+  text-decoration: none;
 }
 
 .removeButton {
