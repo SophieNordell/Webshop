@@ -81,10 +81,8 @@ const UserInputs = ({ onSubmit = () => {} }) => {
         onChange={handleChange}
       />
 
-      <div className="user-inputs-footer">
-        <p>Totalt SEK</p>
-
         <div className="button-container">
+
           <button
             type="button"
             className="return-button"
@@ -92,11 +90,15 @@ const UserInputs = ({ onSubmit = () => {} }) => {
           >
             Fortsätt handla
           </button>
-          <button type="submit" className="continue-button">
-            Gå vidare
+
+          <button 
+            type="submit" 
+            className="continue-button"
+          >
+            Slutför köp
           </button>
+
         </div>
-      </div>
     </form>
   );
 };
