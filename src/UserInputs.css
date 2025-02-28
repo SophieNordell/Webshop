@@ -1,46 +1,50 @@
 .user-form {
     display: flex;
     flex-direction: column;
-    padding: 1rem 20rem;
-    margin: 0;
+    padding: 1rem;
+    margin: 0 auto;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 .user-form h2 {
-    display: flex;
-    justify-content: flex-start;
-    padding: 1.5rem 0;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.user-form label {
+    margin-bottom: 0.3rem;
+    font-weight: bold;
+    align-self: flex-start;
 }
 
 .user-form input {
-    padding: 1rem;
-    margin: 0.2rem 0 1rem 0;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
     background-color: #F5F5F5;
-    border: none;
-} 
-
-.user-form label {
-    display: flex;
-    justify-content: flex-start;
-}
-
-.user-inputs-footer {
-    display: flex;
-    justify-content: space-between;
-    padding: 1.5rem 21rem;
-}
-
-.user-inputs-footer button {
-    padding: 0 1rem;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    line-height: 1.6;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 100%;
+    font-size: 1rem;
 }
 
 .button-container {
     display: flex;
-    justify-content: flex-end;
+    flex-direction: row;
+    justify-content: space-between;
     gap: 1rem;
+    margin-top: 1rem;
+}
+
+.button-container button {
+    padding: 0.8rem 1rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    width: 48%;
 }
 
 .return-button {
@@ -51,4 +55,38 @@
 .continue-button {
     background-color: #BA3656;
     color: #ffffff;
+}
+
+.return-button:hover {
+    background-color: #D8D0C3;
+}
+
+.continue-button:hover {
+    background-color: #A62E4A;
+}
+
+@media (max-width: 768px) {
+    .user-form {
+        padding: 1rem;
+    }
+
+    .user-form h2 {
+        font-size: 1.3rem;
+    }
+
+    .user-form input {
+        padding: 0.7rem;
+        font-size: 0.9rem;
+        max-width: 600px;
+    }
+
+    .button-container {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+
+    .button-container button {
+        width: 100%;
+        text-align: center;
+    }
 }
