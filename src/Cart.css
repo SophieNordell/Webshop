@@ -90,32 +90,6 @@ h1 {
   font-size: 1rem;
 }
 
-.greyButton {
-  background: #eae5dc;
-  text-decoration: none;
-  padding: 0.5rem 1rem;
-  color: #000;
-  border-radius: 5px;
-}
-
-.greyButton:hover {
-  text-decoration: none;
-}
-
-.redButton {
-  background: #ba3656;
-  color: #fff;
-  margin-left: 1rem;
-  cursor: pointer;
-  text-decoration: none;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-}
-.redButton:hover {
-  color: #e8c0ca;
-  text-decoration: none;
-}
-
 .removeButton {
   border-radius: 99%;
   color: #fff;
