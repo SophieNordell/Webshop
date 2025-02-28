@@ -19,6 +19,8 @@ const Cart = ({ setCartCount }) => {
     }
   });
 
+  const [warning, setWarning] = useState("");
+
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
@@ -56,6 +58,17 @@ const Cart = ({ setCartCount }) => {
     setCart((prevCart) => prevCart.filter((item) => item.id !== id));
   };
 
+  const handleProceed = (e) => {
+    if (cart.length === 0) {
+      e.preventDefault();
+      setWarning("Du måste lägga till varor i varukorgen för att gå vidare.");
+
+      setTimeout(() => {
+        setWarning("");
+      }, 2000);
+    }
+  };
+
   return (
     <div>
       <h1>Varukorg</h1>
@@ -69,10 +82,7 @@ const Cart = ({ setCartCount }) => {
                 <img src={item.image} alt={item.title} />
               </div>
               <div className="productInfo">
-                <Link
-                  to={`/product/${item.id}`}
-                  style={{ textDecoration: "none", color: "black" }}
-                >
+                <Link to={`/product/${item.id}`}>
                   <h3>{item.title}</h3>
                 </Link>
                 <span className="price">{item.price} Kr</span>
@@ -111,11 +121,12 @@ const Cart = ({ setCartCount }) => {
             Fortsätt handla
           </Link>
 
-          <Link className="redButton" to="/Userinputs">
+          <Link className="redButton" to="/Userinputs" onClick={handleProceed}>
             Gå vidare
           </Link>
         </div>
       </div>
+      {warning && <p className="warningMessage">{warning}</p>}
     </div>
   );
 };
