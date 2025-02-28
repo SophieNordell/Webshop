@@ -7,11 +7,20 @@ const ProductList = ({ products }) => {
 
   const addToCart = (product) => {
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
-    cart.push(product);
+    const existingProductIndex = cart.findIndex(
+      (item) => item.id === product.id
+    );
+
+    if (existingProductIndex !== -1) {
+      cart[existingProductIndex].quantity += 1;
+    } else {
+      cart.push({ ...product, quantity: 1 });
+    }
+
     localStorage.setItem("cart", JSON.stringify(cart));
 
-    setSelectedProduct(product); // Spara produkten i state
-    setShowModal(true); // Visa modalen
+    setSelectedProduct(product);
+    setShowModal(true);
   };
 
   return (
@@ -24,7 +33,7 @@ const ProductList = ({ products }) => {
             className="product-image"
           />
           <p className="product-title">{product.title}</p>
-          <p className="product-price">{product.price} SEK</p>
+          <p className="product-price">{product.price} Kr</p>
           <button
             className="add-to-cart-button"
             onClick={() => addToCart(product)}

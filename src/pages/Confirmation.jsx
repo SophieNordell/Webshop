@@ -1,20 +1,24 @@
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "/src/confirmation.css";
 
 const Confirmation = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const { customerData } = location.state || {};
 
   const [cart, setCart] = useState([]);
   const [orderNumber, setOrderNumber] = useState("");
 
+  const handleCheckout = () => {
+    localStorage.removeItem("cart");
+    navigate("/");
+  };
+
   useEffect(() => {
-    // Generera ordernummer
     const randomOrderNumber = Math.floor(100000 + Math.random() * 900000);
     setOrderNumber(randomOrderNumber);
 
-    // Hämta varukorg från `location.state` eller `localStorage`
     if (location.state?.cart) {
       setCart(location.state.cart);
     } else {
@@ -66,6 +70,11 @@ const Confirmation = () => {
       <p>
         <strong>Total: {total} SEK</strong>
       </p>
+      {cart.length > 0 && (
+        <button className="redButton" onClick={handleCheckout}>
+          Stäng
+        </button>
+      )}
     </div>
   );
 };

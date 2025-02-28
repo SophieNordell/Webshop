@@ -6,7 +6,13 @@ const Cart = ({ setCartCount }) => {
   const [cart, setCart] = useState(() => {
     try {
       const savedCart = localStorage.getItem("cart");
-      return savedCart ? JSON.parse(savedCart) : [];
+      const parsedCart = savedCart ? JSON.parse(savedCart) : [];
+
+      return parsedCart.map((item) => ({
+        ...item,
+        price: isNaN(parseFloat(item.price)) ? 0 : parseFloat(item.price),
+        quantity: item.quantity || 1,
+      }));
     } catch (error) {
       console.error("Error reading cart from localStorage", error);
       return [];
@@ -15,8 +21,11 @@ const Cart = ({ setCartCount }) => {
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
+
+  useEffect(() => {
     if (setCartCount) {
-      setCartCount(cart.length);
+      setCartCount(cart.reduce((acc, item) => acc + item.quantity, 0));
     }
   }, [cart, setCartCount]);
 
@@ -42,6 +51,7 @@ const Cart = ({ setCartCount }) => {
     const price = parseFloat(item.price);
     return sum + (isNaN(price) ? 0 : price) * item.quantity;
   }, 0);
+
   const removeItem = (id) => {
     setCart((prevCart) => prevCart.filter((item) => item.id !== id));
   };
@@ -50,7 +60,7 @@ const Cart = ({ setCartCount }) => {
     <div>
       <h1>Varukorg</h1>
       {cart.length === 0 ? (
-        <p>Varukorgen är tomas</p>
+        <p>Varukorgen är tom. Handla nu så du kommer upp på nivån!</p>
       ) : (
         <div className="cartWrap">
           {cart.map((item) => (
@@ -65,7 +75,7 @@ const Cart = ({ setCartCount }) => {
                 >
                   <h3>{item.title}</h3>
                 </Link>
-                <span className="price">{item.price} USD</span>
+                <span className="price">{item.price} Kr</span>
               </div>
               <div className="productCounter">
                 <button
