@@ -8,20 +8,19 @@ const Home = () => {
   return (
     <>
       <div className="homepage-div">
-        <Link
-          to="/products"
-          state={{ category: "women's clothing" }}
-          className="womens-wear-div"
-        >
-          <img
-            className="womens-wear-img"
-            src={womenswear}
-            alt="Damkläder som hänger på en ställning."
-          />
-          <div className="womens-wear-text">Dam</div>
-        </Link>
-
-        <div className="mens-accessories-div">
+        <div className="categories-div">
+          <Link
+            to="/products"
+            state={{ category: "women's clothing" }}
+            className="womens-wear-div"
+          >
+            <img
+              className="womens-wear-img"
+              src={womenswear}
+              alt="Damkläder som hänger på en ställning."
+            />
+            <div className="womens-wear-text">Dam</div>
+          </Link>
           <Link
             to="/products"
             state={{ category: "men's clothing" }}

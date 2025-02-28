@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "../Navbar.css";
 import cart from "../images/cart-icon.png";
 
@@ -8,8 +8,12 @@ const Navbar = ({ cartCount }) => {
       <div className="nav-div">
         <div className="nav-links">
           <div className="nav-home-products">
-            <Link to="/">HEM</Link>
-            <Link to="/Products">PRODUKTER</Link>
+            <NavLink to="/" activeClassName="active">
+              HEM
+            </NavLink>
+            <NavLink to="/Products" activeClassName="active">
+              PRODUKTER
+            </NavLink>
           </div>
           <Link to="/Cart" className="cart-button">
             <img src={cart} alt="Varukorg-ikon" className="cart-icon" />
