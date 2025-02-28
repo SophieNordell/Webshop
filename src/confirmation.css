@@ -3,15 +3,39 @@
   border-radius: 8px;
   padding: 20px;
   width: 100%;
-  max-width: 600px;
+  max-width: 1000px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin: 20px auto;
+  margin: auto;
+}
+
+.user {
+  padding-bottom: 2rem;
 }
 
 .confirmation h3 {
-  color: #333;
-  font-size: 1.5em;
-  margin-bottom: 10px;
+  font-size: 1.2em;
+  margin-bottom: 2rem;
+}
+
+.text-info {
+  text-align: left;
+  padding: 0;
+}
+
+.split {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.product-info {
+  display: flex;
+  align-items: center;
+
+  width: 100%; /* Ser till att den tar hela bredden */
+  padding: 1rem;
+  gap: 1rem;
+  flex-wrap: wrap; /* Undviker att element kläms ihop */
 }
 
 .confirmation p {
@@ -24,6 +48,10 @@
   padding-left: 0;
 }
 
+.product-image {
+  justify-content: left;
+}
+
 .confirmation-card li {
   background-color: #f9f9f9;
   padding: 15px;
@@ -32,37 +60,21 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   display: flex;
   align-items: center;
-  justify-content: space-between;
+
+  width: 100%;
 }
 
 .confirmation-card li img {
-  width: 80px;
-  height: 80px;
-  object-fit: cover;
+  width: 150px;
+  height: 150px;
   margin-right: 15px;
   border-radius: 5px;
 }
 
-.confirmation-card li .left-text {
-  flex: 1;
-  text-align: left;
+.logo {
+  width: 200px;
+  height: auto;
 }
 
-.confirmation-card li .right-text {
-  text-align: right;
-}
-
-.confirmation-card li .name {
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-.confirmation-card li .quantity,
-.confirmation-card li .price {
-  font-size: 0.95em;
-}
-
-.confirmation-card li .price {
-  color: #333;
-  font-weight: bold;
+.redButton {
 }
