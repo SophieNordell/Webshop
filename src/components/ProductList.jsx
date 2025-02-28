@@ -24,7 +24,7 @@ const ProductList = ({ products }) => {
             className="product-image"
           />
           <p className="product-title">{product.title}</p>
-          <p className="product-price">{product.price} SEK</p>
+          <p className="product-price">{product.price} Kr</p>
           <button
             className="add-to-cart-button"
             onClick={() => addToCart(product)}

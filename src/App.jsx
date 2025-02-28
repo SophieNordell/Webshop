@@ -13,17 +13,26 @@ import Footer from "./components/Footer";
 const App = () => {
   return (
     <>
-      <Navbar />
       <Routes>
-        <Route path="/products" element={<Products />} />
-        <Route path="/userInputs" element={<UserInputs />} />
-        <Route path="/productCard" element={<ProductCard />} />
-        <Route path="/" element={<Home />} />
-        <Route path="/productPage" element={<ProductPage />} />
         <Route path="/confirmation" element={<Confirmation />} />
-        <Route path="/cart" element={<Cart />} />
+        <Route
+          path="/*"
+          element={
+            <>
+              <Navbar />
+              <Routes>
+                <Route path="/products" element={<Products />} />
+                <Route path="/userInputs" element={<UserInputs />} />
+                <Route path="/productCard" element={<ProductCard />} />
+                <Route path="/" element={<Home />} />
+                <Route path="/productPage" element={<ProductPage />} />
+                <Route path="/cart" element={<Cart />} />
+              </Routes>
+              <Footer />
+            </>
+          }
+        />
       </Routes>
-      <Footer />
     </>
   );
 };

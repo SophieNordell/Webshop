@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useLocation } from "react-router-dom";
+import FetchProducts from "../components/FetchProducts";
 import CategoryFilter from "../components/CategoryFilter";
 import SortDropdown from "../components/SortDropdown";
 import ProductList from "../components/ProductList";
@@ -8,41 +9,11 @@ const ProductPage = () => {
   const location = useLocation();
   const initialCategory = location.state?.category || "all";
 
-  const [products, setProducts] = useState([]);
-  const [filteredProducts, setFilteredProducts] = useState([]);
+  const { products, filteredProducts, setFilteredProducts } =
+    FetchProducts(initialCategory);
+
   const [selectedCategory, setSelectedCategory] = useState(initialCategory);
   const [sortOrder, setSortOrder] = useState("");
-
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const response = await fetch("https://fakestoreapi.com/products");
-        if (!response.ok) {
-          throw new Error(`Something went wrong: ${response.status}`);
-        }
-        const data = await response.json();
-
-        const filteredData = data.filter(
-          (product) => product.category !== "electronics"
-        );
-        setProducts(filteredData);
-
-        if (initialCategory === "all") {
-          setFilteredProducts(filteredData);
-        } else {
-          setFilteredProducts(
-            filteredData.filter(
-              (product) => product.category === initialCategory
-            )
-          );
-        }
-      } catch (error) {
-        console.error("Could not fetch products", error);
-      }
-    };
-
-    fetchProducts();
-  }, [initialCategory]);
 
   const filterByCategory = (category) => {
     setSelectedCategory(category);
@@ -72,7 +43,7 @@ const ProductPage = () => {
   const handleProductClick = (product) => {
     console.log("Selected product:", product);
 
-    const savedCart = JSON.parse(localStorage.getItem("cartProducts")) || [];
+    const savedCart = JSON.parse(localStorage.getItem("cart")) || [];
 
     const existingProductIndex = savedCart.findIndex(
       (item) => item.id === product.id
@@ -88,7 +59,7 @@ const ProductPage = () => {
       console.log(`Added new product: ${product.title}`);
     }
 
-    localStorage.setItem("cartProducts", JSON.stringify(savedCart));
+    localStorage.setItem("cart", JSON.stringify(savedCart));
 
     console.log("Updated cart in localStorage:", savedCart);
   };

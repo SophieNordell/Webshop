@@ -4,8 +4,19 @@ import "../Cart.css";
 
 const Cart = ({ setCartCount }) => {
   const [cart, setCart] = useState(() => {
-    const savedCart = localStorage.getItem("cart");
-    return savedCart ? JSON.parse(savedCart) : [];
+    try {
+      const savedCart = localStorage.getItem("cart");
+      const parsedCart = savedCart ? JSON.parse(savedCart) : [];
+
+      return parsedCart.map((item) => ({
+        ...item,
+        price: isNaN(parseFloat(item.price)) ? 0 : parseFloat(item.price),
+        quantity: item.quantity || 1,
+      }));
+    } catch (error) {
+      console.error("Error reading cart from localStorage", error);
+      return [];
+    }
   });
 
   useEffect(() => {
@@ -33,10 +44,10 @@ const Cart = ({ setCartCount }) => {
     );
   };
 
-  const totalSum = cart.reduce(
-    (sum, item) => sum + item.price * item.quantity,
-    0
-  );
+  const totalSum = cart.reduce((sum, item) => {
+    const price = parseFloat(item.price);
+    return sum + (isNaN(price) ? 0 : price) * item.quantity;
+  }, 0);
 
   const removeItem = (id) => {
     setCart((prevCart) => prevCart.filter((item) => item.id !== id));
