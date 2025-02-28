@@ -28,6 +28,8 @@ h1 {
   text-align: left;
   padding: 0 2rem;
   margin-top: 0;
+  text-decoration: none;
+  color: black;
 }
 
 .counterButton {
@@ -110,6 +112,12 @@ h1 {
   color: #ba3656;
   margin-left: 1rem;
   cursor: pointer;
+}
+
+.warningMessage {
+  color: red;
+  font-size: 14px;
+  margin-top: 10px;
 }
 
 @media only screen and (min-width: 420px) {
