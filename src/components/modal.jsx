@@ -15,7 +15,7 @@ const Modal = ({ title, message, onClose, showCartButton = false }) => {
       <div className="modal-content">
         <h2>{title}</h2>
         <p>{message}</p>
-        <button onClick={onClose}>Fortsätt Shoppa</button>
+        <button onClick={onClose}>Fortsätt handla</button>
 
         {showCartButton && (
           <button onClick={handleGoToCart}>Gå till varukorg</button>
