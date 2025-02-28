@@ -2,7 +2,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 30px;
 }
 
 .productImage {
@@ -46,7 +45,7 @@
 }
 
 .ShopButton {
-  padding: 10px 20px;
+  padding: 10px;
   background-color: #9f3650;
   color: white;
   border: none;
@@ -79,7 +78,6 @@
 
 @media (max-width: 768px) {
   .productPage {
-    padding-top: 60px;
     flex-direction: column;
     align-items: center;
   }

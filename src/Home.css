@@ -1,5 +1,5 @@
 body {
-  margin-top: 7.5rem;
+  margin-top: 0;
   place-items: start;
 }
 
@@ -77,6 +77,11 @@ a:hover {
     flex-wrap: wrap;
     justify-content: stretch;
   }
+
+  body {
+    margin-top: 7.5rem;
+    place-items: start;
+  }
   .womens-wear-div {
     flex: 100%;
     position: relative;
@@ -94,6 +99,4 @@ a:hover {
   .accessories-div::after {
     bottom: 0;
   }
-}
-@media (min-width: 1024px) {
 }
