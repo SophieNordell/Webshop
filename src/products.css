@@ -4,12 +4,17 @@
   box-sizing: border-box;
 }
 
+.product-div {
+  justify-items: center;
+}
+
 .product-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 25px;
   width: 85vw;
   margin-top: 2em;
+  justify-items: center;
 }
 
 .product-card {
@@ -80,9 +85,7 @@
 }
 
 .dropdown {
-  display: flex;
   justify-content: flex-end;
-  margin-top: 2em;
 }
 
 .dropdown select {
