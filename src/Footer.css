@@ -1,12 +1,17 @@
 footer {
   display: flex;
   flex-direction: column;
+<<<<<<< HEAD
+  align-items: left;
+  padding: 10px;
+=======
   align-items: start;
   padding: 1rem;
+>>>>>>> 6d37e816f65d3657778e42ae96f0c4132c12f106
   background-color: #ffffff;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   background: rgb(247, 244, 239);
-  margin-top: 1rem;
+  margin-top: 5px;
   width: 100vw;
 }
 

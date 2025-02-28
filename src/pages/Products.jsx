@@ -65,15 +65,15 @@ const ProductPage = () => {
   };
 
   return (
-    <div>
-      <div className="header">
+    <div className="product-div">
+      <div className="header-container">
         <CategoryFilter
           selectedCategory={selectedCategory}
           onCategoryClick={filterByCategory}
         />
         <SortDropdown sortOrder={sortOrder} onSortChange={handleSortChange} />
       </div>
-      <div>
+      <div className="product-container">
         <ProductList
           products={filteredProducts}
           onProductClick={handleProductClick}
