@@ -1,20 +1,36 @@
 footer {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: left;
   padding: 1rem;
   background-color: #ffffff;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background: rgb(247, 244, 239);
+  margin-top: 1rem;
+  width: 100vw;
 }
 
 .contact-links,
 .social-links {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 8px;
+  align-items: start;
+  gap: 0.4rem;
   margin: 0;
   padding: 0;
+  list-style: none;
+}
+
+.contact,
+.about,
+.social {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 1rem;
+  margin: 0;
+  padding: 2rem 1rem;
+  text-align: left;
 }
 
 @media (min-width: 768px) {
@@ -22,5 +38,10 @@ footer {
   footer {
     flex-direction: row;
     justify-content: space-between;
+  }
+
+  .about {
+    flex-basis: 100%;
+    flex: 2;
   }
 }
