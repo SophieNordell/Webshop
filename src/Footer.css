@@ -1,8 +1,13 @@
 footer {
   display: flex;
   flex-direction: column;
+<<<<<<< HEAD
   align-items: left;
   padding: 10px;
+=======
+  align-items: start;
+  padding: 1rem;
+>>>>>>> 6d37e816f65d3657778e42ae96f0c4132c12f106
   background-color: #ffffff;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   background: rgb(247, 244, 239);
@@ -22,8 +27,8 @@ footer {
 }
 
 .contact,
-.about,
-.social {
+.social,
+.about {
   display: flex;
   flex-direction: column;
   align-items: start;
@@ -31,17 +36,19 @@ footer {
   margin: 0;
   padding: 2rem 1rem;
   text-align: left;
+  flex-basis: 100%;
+  flex: 1;
 }
 
-@media (min-width: 768px) {
+.about {
+  flex-basis: 100%;
+  flex: 2;
+}
+
+@media screen and (min-width: 768px) {
   nav,
   footer {
     flex-direction: row;
     justify-content: space-between;
-  }
-
-  .about {
-    flex-basis: 100%;
-    flex: 2;
   }
 }
