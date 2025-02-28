@@ -70,12 +70,12 @@ const Cart = ({ setCartCount }) => {
   };
 
   return (
-    <div>
+    <div className="cartWrap">
       <h1>Varukorg</h1>
       {cart.length === 0 ? (
         <p>Varukorgen är tom. Handla nu så du kommer upp på nivån!</p>
       ) : (
-        <div className="cartWrap">
+        <div>
           {cart.map((item) => (
             <article key={item.id} className="cartProduct">
               <div className="productImage ">
