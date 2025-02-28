@@ -111,6 +111,7 @@ body {
   @media (min-width: 1024px) {
     .nav-div {
       background-color: rgba(246, 232, 236, 0);
+      box-shadow: none;
     }
   }
 }
