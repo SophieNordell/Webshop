@@ -34,7 +34,7 @@ const App = () => {
                 <Route path="/userInputs" element={<UserInputs />} />
                 <Route path="/productCard" element={<ProductCard />} />
                 <Route path="/" element={<Home />} />
-                <Route path="/productPage" element={<ProductPage />} />
+                <Route path="/product/:id" element={<ProductPage />} />
                 <Route
                   path="/cart"
                   element={<Cart setCartCount={setCartCount} />}
