@@ -5,7 +5,7 @@ import Cart from "./pages/Cart";
 import Confirmation from "./pages/Confirmation";
 import ProductCard from "./components/ProductCard";
 import Home from "./pages/Home";
-import Products from "./pages/Products";
+import Products from "./pages/products";
 import Navbar from "./components/Navbar";
 import { Route, Routes } from "react-router-dom";
 import Footer from "./components/Footer";
@@ -21,13 +21,13 @@ const App = () => {
   }, []);
   return (
     <>
-      <Logotyp />
       <Routes>
         <Route path="/confirmation" element={<Confirmation />} />
         <Route
           path="/*"
           element={
             <>
+              <Logotyp />
               <Navbar cartCount={cartCount} />
               <Routes>
                 <Route path="/products" element={<Products />} />

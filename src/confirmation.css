@@ -32,10 +32,10 @@
   display: flex;
   align-items: center;
 
-  width: 100%; /* Ser till att den tar hela bredden */
+  width: 100%;
   padding: 1rem;
   gap: 1rem;
-  flex-wrap: wrap; /* Undviker att element kläms ihop */
+  flex-wrap: wrap;
 }
 
 .confirmation p {
@@ -74,7 +74,4 @@
 .logo {
   width: 200px;
   height: auto;
-}
-
-.redButton {
 }

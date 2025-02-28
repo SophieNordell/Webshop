@@ -7,7 +7,11 @@ const CartSummary = ({ totalSum, handleProceed }) => {
     <div className="cartFooter">
       <div className="totalAmount">Totalt: {totalSum} SEK</div>
       <div className="cartNav">
+
+        <Link className="greyButton" to="/products">
+
         <Button to="/Products" className="greyButton">
+
           Fortsätt handla
         </Button>
         <Button to="/Userinputs" className="redButton" onClick={handleProceed}>
