@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Button from "../components/Button";
 
-const CartSummary = ({ totalSum, handleProceed }) => {
+const CartSummary = ({ totalSum, handleProceed, isCartEmpty }) => {
   return (
     <div className="cartFooter">
       <div className="totalAmount">Totalt: {totalSum} SEK</div>
@@ -12,11 +12,21 @@ const CartSummary = ({ totalSum, handleProceed }) => {
           <Button className="greyButton">Fortsätt handla</Button>
         </Link>
 
-        {/* Button för "Gå vidare" */}
-        <Button to="/Userinputs" className="redButton" onClick={handleProceed}>
+        {/* Button för "Gå vidare" - inaktiv om varukorgen är tom */}
+        <Button
+          to="/Userinputs"
+          className="redButton"
+          onClick={handleProceed}
+          disabled={isCartEmpty} // Om varukorgen är tom, gör knappen inaktiv
+        >
           Gå vidare
         </Button>
       </div>
+
+      {/* Om varukorgen är tom, visa ett meddelande */}
+      {isCartEmpty && (
+        <div className="empty-cart-message">Varukorgen är tom!</div>
+      )}
     </div>
   );
 };
