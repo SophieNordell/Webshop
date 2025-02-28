@@ -21,8 +21,11 @@ const Cart = ({ setCartCount }) => {
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
+
+  useEffect(() => {
     if (setCartCount) {
-      setCartCount(cart.length);
+      setCartCount(cart.reduce((acc, item) => acc + item.quantity, 0));
     }
   }, [cart, setCartCount]);
 
@@ -57,7 +60,7 @@ const Cart = ({ setCartCount }) => {
     <div>
       <h1>Varukorg</h1>
       {cart.length === 0 ? (
-        <p>Varukorgen är tom</p>
+        <p>Varukorgen är tom. Handla nu så du kommer upp på nivån!</p>
       ) : (
         <div className="cartWrap">
           {cart.map((item) => (
@@ -72,7 +75,7 @@ const Cart = ({ setCartCount }) => {
                 >
                   <h3>{item.title}</h3>
                 </Link>
-                <span className="price">{item.price} USD</span>
+                <span className="price">{item.price} Kr</span>
               </div>
               <div className="productCounter">
                 <button
