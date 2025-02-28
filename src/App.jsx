@@ -10,6 +10,7 @@ import Navbar from "./components/Navbar";
 import { Route, Routes } from "react-router-dom";
 import Footer from "./components/Footer";
 import { useState, useEffect } from "react";
+import Logotyp from "./components/Logotyp";
 
 const App = () => {
   const [cartCount, setCartCount] = useState(0);
@@ -20,6 +21,7 @@ const App = () => {
   }, []);
   return (
     <>
+      <Logotyp />
       <Routes>
         <Route path="/confirmation" element={<Confirmation />} />
         <Route

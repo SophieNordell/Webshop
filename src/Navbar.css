@@ -3,7 +3,7 @@ body {
 }
 
 .nav-div {
-  height: calc(0vw + 20px); /* 10vw + extra padding */
+  height: calc(0vw + 20px);
   display: flex;
   align-items: baseline;
   justify-content: space-between;
@@ -58,6 +58,9 @@ body {
 .nav-home-products {
   display: flex;
   gap: 20px;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.653);
+  border-radius: 10px;
 }
 
 .nav-cart {

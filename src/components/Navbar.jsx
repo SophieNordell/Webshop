@@ -1,18 +1,11 @@
 import { Link } from "react-router-dom";
 import "../Navbar.css";
-import logo from "../images/mangosteen-logo.png";
 import cart from "../images/cart-icon.png";
 
 const Navbar = ({ cartCount }) => {
   return (
     <header>
       <div className="nav-div">
-        <div className="img-div">
-          <Link to="/">
-            <img src={logo} alt="Mangosteen logotyp" />
-          </Link>
-        </div>
-
         <div className="nav-links">
           <div className="nav-home-products">
             <Link to="/">HEM</Link>
