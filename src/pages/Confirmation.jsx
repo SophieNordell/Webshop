@@ -35,10 +35,18 @@ const Confirmation = () => {
 
   return (
     <div className="confirmation">
-      <h3>Tack för ditt köp, {customerData?.name || "Kund"}!</h3>
-      <p>Ordernummer: #{orderNumber}</p>
-      <p>Kvitto finns på: {customerData?.email || "ej angiven e-post"}</p>
+      <img
+        src="/src/images/mangosteen-logo.png"
+        alt="Mangosteen Logo"
+        className="logo"
+      />
 
+      <div className="user">
+        <h3>Tack för ditt köp, {customerData?.name || "Kund"}!</h3>
+
+        <p>Ordernummer: #{orderNumber}</p>
+        <p>Kvitto finns på: {customerData?.email || "ej angiven e-post"}</p>
+      </div>
       <h3>Dina varor:</h3>
       <div className="confirmation-card">
         <ul>
@@ -51,13 +59,15 @@ const Confirmation = () => {
                     alt={item.title}
                     className="product-image"
                   />
-                  <div className="text-info">
-                    <p>
-                      <strong>{item.title}</strong>
-                    </p>
-                    <p>Pris: {item.price} SEK</p>
+                  <div className="split">
+                    <div className="text-info">
+                      <p>
+                        <strong>{item.title}</strong>
+                      </p>
+                      <p>Pris: {item.price} SEK</p>
+                    </div>
+                    <p className="quantity">{item.quantity} st</p>
                   </div>
-                  <p className="quantity">{item.quantity} st</p>
                 </div>
               </li>
             ))
