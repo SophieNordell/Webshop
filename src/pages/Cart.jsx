@@ -79,18 +79,19 @@ const Cart = ({ setCartCount }) => {
               </div>
               <div className="productCounter">
                 <button
-                  onClick={() => increaseQuantity(item.id)}
-                  className="counterButton"
-                >
-                  +
-                </button>
-                <span className="productCount">{item.quantity} st</span>
-                <button
                   className="counterButton"
                   onClick={() => decreaseQuantity(item.id)}
                   disabled={item.quantity === 1}
                 >
                   -
+                </button>
+                <span className="productCount">{item.quantity} st</span>
+
+                <button
+                  onClick={() => increaseQuantity(item.id)}
+                  className="counterButton"
+                >
+                  +
                 </button>
                 <button
                   className="removeButton"
