@@ -8,10 +8,17 @@ const Navbar = ({ cartCount }) => {
       <div className="nav-div">
         <div className="nav-links">
           <div className="nav-home-products">
-            <NavLink to="/" activeClassName="active">
+            {/* Uppdaterad användning av className istället för activeClassName */}
+            <NavLink
+              to="/"
+              className={({ isActive }) => (isActive ? "active" : "")}
+            >
               HEM
             </NavLink>
-            <NavLink to="/Products" activeClassName="active">
+            <NavLink
+              to="/Products"
+              className={({ isActive }) => (isActive ? "active" : "")}
+            >
               PRODUKTER
             </NavLink>
           </div>

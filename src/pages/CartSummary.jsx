@@ -1,17 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Button from "../components/Button";
 
 const CartSummary = ({ totalSum, handleProceed }) => {
   return (
     <div className="cartFooter">
       <div className="totalAmount">Totalt: {totalSum} SEK</div>
       <div className="cartNav">
-        <Link className="greyButton" to="/">
+        <Button to="/Products" className="greyButton">
           Fortsätt handla
-        </Link>
-        <Link className="redButton" to="/Userinputs" onClick={handleProceed}>
+        </Button>
+        <Button to="/Userinputs" className="redButton" onClick={handleProceed}>
           Gå vidare
-        </Link>
+        </Button>
       </div>
     </div>
   );
