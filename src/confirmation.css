@@ -1,6 +1,5 @@
 .confirmation {
   background-color: #ece9e9;
-  border-radius: 8px;
   padding: 20px;
   width: 100%;
   max-width: 1000px;
@@ -24,18 +23,19 @@
 
 .split {
   display: flex;
-  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: column;
   width: 100%;
 }
 
 .product-info {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-
-  width: 100%;
   padding: 1rem;
   gap: 1rem;
-  flex-wrap: wrap;
+  width: 100%;
 }
 
 .confirmation p {
@@ -60,11 +60,12 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   display: flex;
   align-items: center;
-
   width: 100%;
 }
 
 .confirmation-card li img {
+  display: flex;
+  justify-content: center;
   width: 150px;
   height: 150px;
   margin-right: 15px;
@@ -74,4 +75,16 @@
 .logo {
   width: 200px;
   height: auto;
+}
+
+@media (min-width: 768px) {
+  .confirmation {
+    border-radius: 8px;
+  }
+
+  .product-info {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
 }
