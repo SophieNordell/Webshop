@@ -92,6 +92,7 @@ body {
   display: flex;
   gap: 5px;
   align-items: center;
+  padding: 20px;
 }
 .category-div .category {
   padding: 0.5rem 1rem;
@@ -106,6 +107,7 @@ body {
 }
 .dropdown {
   display: flex;
+  margin-left: auto;
 }
 .dropdown select {
   font-size: 0.9rem;
@@ -116,7 +118,6 @@ body {
   transition: all 0.3s ease;
 }
 
-/* Modal-overlay */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -130,7 +131,6 @@ body {
   z-index: 1000;
 }
 
-/* Modal Content */
 .modal-content {
   background: #fff;
   padding: 2rem;
@@ -142,21 +142,18 @@ body {
   animation: fadeIn 0.3s ease-in-out;
 }
 
-/* Modal Title */
 .modal-content h2 {
   font-size: 1.5rem;
   margin-bottom: 10px;
   color: #333;
 }
 
-/* Modal Text */
 .modal-content p {
   font-size: 1.1rem;
   color: #666;
   margin-bottom: 20px;
 }
 
-/* Modal Buttons */
 .modal-content button {
   background: green;
   color: white;

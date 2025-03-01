@@ -37,3 +37,4 @@ const CartSummary = ({ cart, totalSum, handleProceed }) => {
     </div>
   );
 };
+export default CartSummary;
