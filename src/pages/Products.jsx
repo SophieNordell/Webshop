@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import FetchProducts from "../components/FetchProducts";
 import CategoryFilter from "../components/CategoryFilter";
@@ -9,21 +9,24 @@ const ProductPage = ({ cart, setCart }) => {
   const location = useLocation();
   const initialCategory = location.state?.category || "all";
 
-  const { products, filteredProducts, setFilteredProducts } =
-    FetchProducts(initialCategory);
+  const { products } = FetchProducts();
 
   const [selectedCategory, setSelectedCategory] = useState(initialCategory);
+  const [filteredProducts, setFilteredProducts] = useState(products);
   const [sortOrder, setSortOrder] = useState("");
 
-  const filterByCategory = (category) => {
-    setSelectedCategory(category);
-    if (category === "all") {
+  useEffect(() => {
+    if (selectedCategory === "all") {
       setFilteredProducts(products);
     } else {
       setFilteredProducts(
-        products.filter((product) => product.category === category)
+        products.filter((product) => product.category === selectedCategory)
       );
     }
+  }, [selectedCategory, products]);
+
+  const filterByCategory = (category) => {
+    setSelectedCategory(category);
   };
 
   const handleSortChange = (event) => {
@@ -74,7 +77,11 @@ const ProductPage = ({ cart, setCart }) => {
         <SortDropdown sortOrder={sortOrder} onSortChange={handleSortChange} />
       </div>
       <div className="product-container">
-        <ProductList products={products} setCart={setCart} cart={cart} />
+        <ProductList
+          products={filteredProducts}
+          setCart={setCart}
+          cart={cart}
+        />
       </div>
     </div>
   );
