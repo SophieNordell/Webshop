@@ -217,4 +217,23 @@
   .category-div .category {
     padding: 0.5rem 1rem;
   }
+
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    width: 100%;
+  }
+
+  .category-div {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    margin-left: 200px;
+  }
+
+  .dropdown {
+    margin-left: auto;
+  }
 }
