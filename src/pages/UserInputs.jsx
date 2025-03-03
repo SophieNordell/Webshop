@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "/src/UserInputs.css";
+import Button from "../components/Button";
 
 const UserInputs = ({ onSubmit = () => {} }) => {
   const navigate = useNavigate();
@@ -81,24 +82,19 @@ const UserInputs = ({ onSubmit = () => {} }) => {
         onChange={handleChange}
       />
 
-        <div className="button-container">
+      <div className="button-container">
+        <Button
+          className="greyButton"
+          onClick={handleContinueShopping}
+          to="/products"
+        >
+          Fortsätt handla
+        </Button>
 
-          <button
-            type="button"
-            className="return-button"
-            onClick={handleContinueShopping}
-          >
-            Fortsätt handla
-          </button>
-
-          <button 
-            type="submit" 
-            className="continue-button"
-          >
-            Slutför köp
-          </button>
-
-        </div>
+        <Button className="redButton" type="submit">
+          Slutför köp
+        </Button>
+      </div>
     </form>
   );
 };
