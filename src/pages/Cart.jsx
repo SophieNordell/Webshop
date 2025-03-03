@@ -1,15 +1,12 @@
-import React from "react";
-
+import React, { useState, useEffect } from "react";
 import "../Cart.css";
 import CartItem from "./CartItem";
 import CartSummary from "./CartSummary";
-import WarningMessage from "./WarningMessage";
 import useCartActions from "./useCartActions";
 
 const Cart = ({ setCartCount }) => {
   const {
     cart,
-    warning,
     increaseQuantity,
     decreaseQuantity,
     removeItem,
@@ -33,9 +30,11 @@ const Cart = ({ setCartCount }) => {
           />
         ))
       )}
-
-      <CartSummary totalSum={totalSum} handleProceed={handleProceed} />
-      {warning && <WarningMessage message={warning} />}
+      <CartSummary
+        cart={cart}
+        totalSum={totalSum}
+        handleProceed={handleProceed}
+      />
     </div>
   );
 };
