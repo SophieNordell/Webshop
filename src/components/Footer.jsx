@@ -10,7 +10,7 @@ const Footer = () => {
           det är en attityd, en livsstil och ett statement. Vi skapar
           kollektioner för dem som vågar sticka ut, för dem som ser mode som ett
           konstverk och en förlängning av sin personlighet.
-          <strong>Våga vara annorlunda. Våga vara Mangosteen.</strong>
+          <strong> Våga vara annorlunda. Våga vara Mangosteen.</strong>
         </p>
       </div>
 
