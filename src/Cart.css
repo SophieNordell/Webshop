@@ -9,7 +9,7 @@ h1 {
 }
 
 .cartWrap h3 {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
 }
 .cartWrap {
   max-width: 1000px;
@@ -19,6 +19,7 @@ h1 {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  padding: 2rem;
 }
 .cartProduct {
   display: flex;
@@ -26,12 +27,12 @@ h1 {
   align-items: center;
   border-top: 1px solid #eae5dc;
   border-bottom: 1px solid #eae5dc;
-  padding: 2rem;
+  padding: 2rem 0;
 }
 
 .productInfo {
   text-align: left;
-  padding: 0 2rem;
+  padding: 2rem 0;
   margin-top: 0;
   text-decoration: none;
   color: black;
@@ -41,12 +42,11 @@ h1 {
   padding: 0.3rem 0.7rem;
   line-height: 90%;
   border-radius: 0;
-}
-
-.counterButton {
   background: #eae5dc;
   border: none;
   cursor: pointer;
+  font-size: 1.2rem;
+  margin: 0.8rem;
 }
 
 .cartWrap .productImage {
@@ -72,9 +72,16 @@ h1 {
   flex-grow: 1;
 }
 
+.cartFooter {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+  gap: 1rem;
+}
+
 .cartNav {
   display: flex;
-  justify-content: end;
+  justify-content: center;
 }
 
 .cartNav button {
@@ -131,8 +138,22 @@ h1 {
   font-size: 14px;
 }
 
-@media only screen and (min-width: 420px) {
+@media only screen and (min-width: 520px) {
   .cartProduct {
     flex-direction: row;
+  }
+
+  .productInfo {
+    padding: 0 2rem;
+  }
+  .cartNav {
+    justify-content: end;
+  }
+  .cartFooter {
+    flex-direction: row;
+  }
+  .counterButton {
+    font-size: 1rem;
+    margin: 0.2rem;
   }
 }

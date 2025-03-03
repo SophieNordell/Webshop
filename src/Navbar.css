@@ -114,4 +114,8 @@
   .logo-div img {
     height: 9rem;
   }
+  body {
+    padding-top: 3rem;
+    margin-top: 7.5rem;
+  }
 }
