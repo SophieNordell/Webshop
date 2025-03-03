@@ -4,7 +4,7 @@ import "../Cart.css";
 import CartItem from "./CartItem";
 import CartSummary from "./CartSummary";
 import WarningMessage from "./WarningMessage";
-import useCartActions from "./useCartActions";
+import useCartActions from "./UseCartActions";
 
 const Cart = ({ setCartCount }) => {
   const {
