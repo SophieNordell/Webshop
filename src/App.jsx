@@ -9,16 +9,12 @@ import Products from "./pages/products";
 import Navbar from "./components/Navbar";
 import { Route, Routes } from "react-router-dom";
 import Footer from "./components/Footer";
-import { useState, useEffect } from "react";
 import Logotyp from "./components/Logotyp";
+import useCartActions from "./pages/useCartActions";
 
 const App = () => {
-  const [cartCount, setCartCount] = useState(0);
+  const { cart, setCart } = useCartActions();
 
-  useEffect(() => {
-    const savedCart = JSON.parse(localStorage.getItem("cart")) || [];
-    setCartCount(savedCart.reduce((acc, item) => acc + item.quantity, 0));
-  }, []);
   return (
     <>
       <Routes>
@@ -28,17 +24,17 @@ const App = () => {
           element={
             <>
               <Logotyp />
-              <Navbar cartCount={cartCount} />
+              <Navbar cartCount={cart.length} />
               <Routes>
                 <Route path="/products" element={<Products />} />
                 <Route path="/userInputs" element={<UserInputs />} />
                 <Route path="/productCard" element={<ProductCard />} />
                 <Route path="/" element={<Home />} />
-                <Route path="/product/:id" element={<ProductPage />} />
                 <Route
-                  path="/cart"
-                  element={<Cart setCartCount={setCartCount} />}
+                  path="/product/:id"
+                  element={<ProductPage setCart={setCart} cart={cart} />}
                 />
+                <Route path="/cart" element={<Cart />} />
               </Routes>
               <Footer />
             </>

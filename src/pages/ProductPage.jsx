@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import FetchProducts from "../components/FetchProducts";
 import { addToCart } from "../components/addToCart";
 import "../ProductPage.css";
 
-const ProductPage = () => {
+const ProductPage = ({ setCart, cart }) => {
   const { id } = useParams();
   const { products, loading, error } = FetchProducts();
   const [addedToCart, setAddedToCart] = useState(false);
@@ -14,6 +14,42 @@ const ProductPage = () => {
   const handleGoBack = () => {
     window.history.back();
   };
+
+  const updateCartCount = () => {
+    const savedCart = JSON.parse(localStorage.getItem("cart")) || [];
+    const newCartCount = savedCart.reduce(
+      (acc, item) => acc + item.quantity,
+      0
+    );
+    setCartCount(newCartCount); // Uppdatera cartCount när vi lägger till en produkt
+  };
+
+  const handleAddToCart = (product) => {
+    setCart([...cart, product]);
+
+    /*  setCartCount(1); */
+    /*  addToCart(product); // Lägg till produkt i varukorgen
+
+    // Uppdatera tillståndet och knappen
+    setAddedToCart(true);
+
+    // Uppdatera varukorgens räknare
+    updateCartCount(); */
+  };
+
+  useEffect(() => {
+    // Lyssna på ändringar i localStorage och uppdatera cartCount
+    const handleStorageChange = () => {
+      updateCartCount();
+    };
+
+    window.addEventListener("storage", handleStorageChange);
+
+    // Rensa event listener när komponenten unmountar
+    return () => {
+      window.removeEventListener("storage", handleStorageChange);
+    };
+  }, []); // Kör endast en gång när komponenten mountas
 
   if (loading) return <div>Laddar produkt...</div>;
   if (error) return <div>Fel: {error}</div>;
@@ -33,13 +69,7 @@ const ProductPage = () => {
         <h1>{product.title}</h1>
         <p>{product.description}</p>
         <h3>{product.price} kr</h3>
-        <button
-          className="ShopButton"
-          onClick={() => {
-            addToCart(product);
-            setAddedToCart(true);
-          }}
-        >
+        <button className="ShopButton" onClick={() => handleAddToCart(product)}>
           {addedToCart ? "Tillagd i varukorgen" : "Lägg till i varukorg +"}
         </button>
       </div>
