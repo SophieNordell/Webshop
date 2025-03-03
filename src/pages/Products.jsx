@@ -43,30 +43,6 @@ const ProductPage = ({ cart, setCart }) => {
     setFilteredProducts(sorted);
   };
 
-  const handleProductClick = (product) => {
-    console.log("Selected product:", product);
-
-    const savedCart = JSON.parse(localStorage.getItem("cart")) || [];
-
-    const existingProductIndex = savedCart.findIndex(
-      (item) => item.id === product.id
-    );
-
-    if (existingProductIndex !== -1) {
-      savedCart[existingProductIndex].quantity += 1;
-      console.log(
-        `Increased quantity for ${product.title}. New quantity: ${savedCart[existingProductIndex].quantity}`
-      );
-    } else {
-      savedCart.push({ ...product, quantity: 1 });
-      console.log(`Added new product: ${product.title}`);
-    }
-
-    localStorage.setItem("cart", JSON.stringify(savedCart));
-
-    console.log("Updated cart in localStorage:", savedCart);
-  };
-
   return (
     <div className="product-div">
       <div className="header-container">

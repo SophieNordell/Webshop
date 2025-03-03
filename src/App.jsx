@@ -38,7 +38,13 @@ const App = () => {
           element={
             <>
               <Logotyp />
-              <Navbar cartCount={cart.length} />
+              <Navbar
+                cartCount={cart.reduce(
+                  (total, item) => total + item.quantity,
+                  0
+                )}
+              />
+
               <Routes>
                 <Route
                   path="/products"
