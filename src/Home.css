@@ -4,6 +4,10 @@ a {
   font-weight: 700;
 }
 
+body {
+  margin-top: 12.5rem;
+}
+
 a:hover {
   color: rgb(186, 54, 86);
   text-decoration: underline;
@@ -73,10 +77,6 @@ a:hover {
     justify-content: stretch;
   }
 
-  body {
-    margin-top: 7.5rem;
-    place-items: start;
-  }
   .womens-wear-div {
     flex: 100%;
     position: relative;
@@ -93,5 +93,9 @@ a:hover {
   .mens-wear-div::after,
   .accessories-div::after {
     bottom: 0;
+  }
+
+  body {
+    margin-top: 12.5rem;
   }
 }
