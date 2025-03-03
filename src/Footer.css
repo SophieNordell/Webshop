@@ -1,11 +1,12 @@
 footer {
   display: flex;
   flex-direction: column;
+  align-items: left;
   padding: 10px;
   background-color: #ffffff;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   background: rgb(247, 244, 239);
-  margin-top: 2rem;
+  margin-top: 5px;
   width: 100vw;
 }
 
@@ -28,7 +29,7 @@ footer {
   align-items: start;
   gap: 1rem;
   margin: 0;
-  padding: 2.5rem;
+  padding: 2rem 1rem;
   text-align: left;
   flex-basis: 100%;
   flex: 1;
