@@ -23,6 +23,22 @@ const useCartActions = () => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
 
+  const addToCart = (newItem) => {
+    setCart((prevCart) => {
+      const itemExists = prevCart.some((item) => item.id === newItem.id);
+
+      if (itemExists) {
+        return prevCart.map((item) =>
+          item.id === newItem.id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        );
+      } else {
+        return [...prevCart, { ...newItem, quantity: 1 }];
+      }
+    });
+  };
+
   const increaseQuantity = (id) => {
     setCart((prevCart) =>
       prevCart.map((item) =>
@@ -63,6 +79,7 @@ const useCartActions = () => {
     setCart,
     warning,
     setWarning,
+    addToCart,
     increaseQuantity,
     decreaseQuantity,
     removeItem,

@@ -4,7 +4,7 @@ import CartItem from "./CartItem";
 import CartSummary from "./CartSummary";
 import useCartActions from "./useCartActions";
 
-const Cart = (/* { setCartCount } */) => {
+const Cart = () => {
   const {
     cart,
     increaseQuantity,
@@ -12,7 +12,7 @@ const Cart = (/* { setCartCount } */) => {
     removeItem,
     totalSum,
     handleProceed,
-  } = useCartActions(/* setCartCount */);
+  } = useCartActions();
 
   return (
     <div className="cartWrap">

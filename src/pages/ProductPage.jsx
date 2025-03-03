@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import FetchProducts from "../components/FetchProducts";
-import { addToCart } from "../components/addToCart";
 import "../ProductPage.css";
 
 const ProductPage = ({ setCart, cart }) => {
@@ -21,35 +20,24 @@ const ProductPage = ({ setCart, cart }) => {
       (acc, item) => acc + item.quantity,
       0
     );
-    setCartCount(newCartCount); // Uppdatera cartCount när vi lägger till en produkt
+    setCartCount(newCartCount);
   };
 
   const handleAddToCart = (product) => {
     setCart([...cart, product]);
-
-    /*  setCartCount(1); */
-    /*  addToCart(product); // Lägg till produkt i varukorgen
-
-    // Uppdatera tillståndet och knappen
-    setAddedToCart(true);
-
-    // Uppdatera varukorgens räknare
-    updateCartCount(); */
   };
 
   useEffect(() => {
-    // Lyssna på ändringar i localStorage och uppdatera cartCount
     const handleStorageChange = () => {
       updateCartCount();
     };
 
     window.addEventListener("storage", handleStorageChange);
 
-    // Rensa event listener när komponenten unmountar
     return () => {
       window.removeEventListener("storage", handleStorageChange);
     };
-  }, []); // Kör endast en gång när komponenten mountas
+  }, []);
 
   if (loading) return <div>Laddar produkt...</div>;
   if (error) return <div>Fel: {error}</div>;

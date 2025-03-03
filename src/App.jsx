@@ -1,3 +1,5 @@
+// In App.js
+
 import "./App.css";
 import ProductPage from "./pages/ProductPage";
 import UserInputs from "./pages/UserInputs";
@@ -10,10 +12,22 @@ import Navbar from "./components/Navbar";
 import { Route, Routes } from "react-router-dom";
 import Footer from "./components/Footer";
 import Logotyp from "./components/Logotyp";
-import useCartActions from "./pages/useCartActions";
+import { useState, useEffect } from "react";
 
 const App = () => {
-  const { cart, setCart } = useCartActions();
+  const [cart, setCart] = useState(() => {
+    try {
+      const savedCart = localStorage.getItem("cart");
+      return savedCart ? JSON.parse(savedCart) : [];
+    } catch (error) {
+      console.error("Error reading cart from localStorage", error);
+      return [];
+    }
+  });
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
 
   return (
     <>
@@ -26,7 +40,10 @@ const App = () => {
               <Logotyp />
               <Navbar cartCount={cart.length} />
               <Routes>
-                <Route path="/products" element={<Products />} />
+                <Route
+                  path="/products"
+                  element={<Products cart={cart} setCart={setCart} />}
+                />
                 <Route path="/userInputs" element={<UserInputs />} />
                 <Route path="/productCard" element={<ProductCard />} />
                 <Route path="/" element={<Home />} />

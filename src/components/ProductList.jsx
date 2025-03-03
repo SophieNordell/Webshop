@@ -1,11 +1,20 @@
 import { useState } from "react";
 import Modal from "./modal";
 import { Link } from "react-router-dom";
-import { addToCart } from "../components/addToCart";
 
-const ProductList = ({ products }) => {
+const ProductList = ({ products, cart, setCart }) => {
   const [showModal, setShowModal] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
+
+  const handleAddToCart = (product) => {
+    const updatedCart = [...cart, product];
+    setCart(updatedCart);
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+
+    // Visa modal med vald produkt
+    setSelectedProduct(product);
+    setShowModal(true);
+  };
 
   return (
     <div className="product-container">
@@ -22,7 +31,7 @@ const ProductList = ({ products }) => {
           </Link>
           <button
             className="add-to-cart-button"
-            onClick={() => addToCart(product, setShowModal, setSelectedProduct)}
+            onClick={() => handleAddToCart(product)}
           >
             Lägg till i varukorg
           </button>
