@@ -64,12 +64,6 @@ h1 {
   font-weight: 900;
 }
 
-.cartFooter {
-  display: flex;
-  padding: 1rem;
-  justify-content: stretch;
-}
-
 .totalAmount {
   font-size: 1.2rem;
   font-weight: 700;
@@ -104,7 +98,6 @@ h1 {
 .warningMessage {
   color: red;
   font-size: 14px;
-  margin-top: 10px;
 }
 
 @media only screen and (min-width: 420px) {

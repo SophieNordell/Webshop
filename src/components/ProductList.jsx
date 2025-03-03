@@ -1,42 +1,28 @@
 import { useState } from "react";
 import Modal from "./modal";
+import { Link } from "react-router-dom";
+import { addToCart } from "../components/addToCart";
 
 const ProductList = ({ products }) => {
   const [showModal, setShowModal] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
 
-  const addToCart = (product) => {
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
-    const existingProductIndex = cart.findIndex(
-      (item) => item.id === product.id
-    );
-
-    if (existingProductIndex !== -1) {
-      cart[existingProductIndex].quantity += 1;
-    } else {
-      cart.push({ ...product, quantity: 1 });
-    }
-
-    localStorage.setItem("cart", JSON.stringify(cart));
-
-    setSelectedProduct(product);
-    setShowModal(true);
-  };
-
   return (
     <div className="product-container">
       {products.map((product) => (
         <div key={product.id} className="product-card">
-          <img
-            src={product.image}
-            alt={product.title}
-            className="product-image"
-          />
-          <p className="product-title">{product.title}</p>
-          <p className="product-price">{product.price} Kr</p>
+          <Link to={`/product/${product.id}`} className="product-link">
+            <img
+              src={product.image}
+              alt={product.title}
+              className="product-image"
+            />
+            <p className="product-title">{product.title}</p>
+            <p className="product-price">{product.price} Kr</p>
+          </Link>
           <button
             className="add-to-cart-button"
-            onClick={() => addToCart(product)}
+            onClick={() => addToCart(product, setShowModal, setSelectedProduct)}
           >
             Lägg till i varukorg
           </button>
