@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import Button from "../components/Button";
 
 const CartSummary = ({ cart, totalSum, handleProceed }) => {
@@ -7,11 +6,6 @@ const CartSummary = ({ cart, totalSum, handleProceed }) => {
   const handleProceedClick = (e) => {
     if (isCartEmpty) {
       e.preventDefault();
-      setWarning("Varukorgen är tom! Fortsätt handla för att gå vidare.");
-
-      setTimeout(() => {
-        setWarning("");
-      }, 2000);
 
       return;
     }

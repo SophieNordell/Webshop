@@ -11,7 +11,6 @@ const ProductList = ({ products, cart, setCart }) => {
     setCart(updatedCart);
     localStorage.setItem("cart", JSON.stringify(updatedCart));
 
-    // Visa modal med vald produkt
     setSelectedProduct(product);
     setShowModal(true);
   };
