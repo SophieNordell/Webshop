@@ -33,15 +33,17 @@ const ProductPage = () => {
         <h1>{product.title}</h1>
         <p>{product.description}</p>
         <h3>{product.price} kr</h3>
-        <button
-          className="ShopButton"
-          onClick={() => {
-            addToCart(product);
-            setAddedToCart(true);
-          }}
-        >
-          {addedToCart ? "Tillagd i varukorgen" : "Lägg till i varukorg +"}
-        </button>
+        <div className="buttoncontainer">
+          <button
+            className="ShopButton"
+            onClick={() => {
+              addToCart(product);
+              setAddedToCart(true);
+            }}
+          >
+            {addedToCart ? "Tillagd i varukorgen" : "Lägg till i varukorg +"}
+          </button>
+        </div>
       </div>
     </div>
   );
