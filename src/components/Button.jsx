@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "../Button.css";
 
 const Button = ({ children, onClick, className = "", to }) => {
-  const buttonClass = `button ${className}`;
+  const buttonClass = `${className}`;
 
   if (to) {
     return (
@@ -14,7 +14,7 @@ const Button = ({ children, onClick, className = "", to }) => {
   }
 
   return (
-    <button className={buttonClass} onClick={onClick}>
+    <button type="" className={buttonClass} onClick={onClick}>
       {children}
     </button>
   );

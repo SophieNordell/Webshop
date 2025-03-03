@@ -4,6 +4,8 @@
   padding: 0.5rem 1rem;
   color: #000;
   border-radius: 5px;
+  min-width: 150px;
+  line-height: 130%;
 }
 
 .greyButton:hover {
@@ -13,13 +15,33 @@
 .redButton {
   background: #ba3656;
   color: #fff;
-  margin-left: 1rem;
+
   cursor: pointer;
   text-decoration: none;
   padding: 0.5rem 1rem;
   border-radius: 5px;
+  min-width: 150px;
+  display: block;
+  width: 100%;
+  line-height: 130%;
 }
 .redButton:hover {
   color: #e8c0ca;
   text-decoration: none;
+}
+.button-container {
+  flex-direction: column;
+}
+
+@media (min-width: 520px) {
+  .redButton {
+    width: fit-content;
+  }
+
+  .greyButton {
+    width: fit-content;
+  }
+  .button-container {
+    flex-direction: row;
+  }
 }
