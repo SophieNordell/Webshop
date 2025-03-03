@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const useCartActions = (setCartCount) => {
+const useCartActions = () => {
   const [cart, setCart] = useState(() => {
     try {
       const savedCart = localStorage.getItem("cart");
@@ -15,6 +15,7 @@ const useCartActions = (setCartCount) => {
       return [];
     }
   });
+  console.log(cart);
 
   const [warning, setWarning] = useState("");
 
@@ -22,11 +23,21 @@ const useCartActions = (setCartCount) => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
 
-  useEffect(() => {
-    if (setCartCount) {
-      setCartCount(cart.reduce((acc, item) => acc + item.quantity, 0));
-    }
-  }, [cart, setCartCount]);
+  const addToCart = (newItem) => {
+    setCart((prevCart) => {
+      const itemExists = prevCart.some((item) => item.id === newItem.id);
+
+      if (itemExists) {
+        return prevCart.map((item) =>
+          item.id === newItem.id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        );
+      } else {
+        return [...prevCart, { ...newItem, quantity: 1 }];
+      }
+    });
+  };
 
   const increaseQuantity = (id) => {
     setCart((prevCart) =>
@@ -68,6 +79,7 @@ const useCartActions = (setCartCount) => {
     setCart,
     warning,
     setWarning,
+    addToCart,
     increaseQuantity,
     decreaseQuantity,
     removeItem,

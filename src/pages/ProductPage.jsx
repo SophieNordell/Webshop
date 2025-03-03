@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import FetchProducts from "../components/FetchProducts";
-import { addToCart } from "../components/addToCart";
 import "../ProductPage.css";
 
-const ProductPage = () => {
+const ProductPage = ({ setCart, cart }) => {
   const { id } = useParams();
   const { products, loading, error } = FetchProducts();
   const [addedToCart, setAddedToCart] = useState(false);
@@ -14,6 +13,31 @@ const ProductPage = () => {
   const handleGoBack = () => {
     window.history.back();
   };
+
+  const updateCartCount = () => {
+    const savedCart = JSON.parse(localStorage.getItem("cart")) || [];
+    const newCartCount = savedCart.reduce(
+      (acc, item) => acc + item.quantity,
+      0
+    );
+    setCartCount(newCartCount);
+  };
+
+  const handleAddToCart = (product) => {
+    setCart([...cart, product]);
+  };
+
+  useEffect(() => {
+    const handleStorageChange = () => {
+      updateCartCount();
+    };
+
+    window.addEventListener("storage", handleStorageChange);
+
+    return () => {
+      window.removeEventListener("storage", handleStorageChange);
+    };
+  }, []);
 
   if (loading) return <div>Laddar produkt...</div>;
   if (error) return <div>Fel: {error}</div>;
@@ -33,17 +57,9 @@ const ProductPage = () => {
         <h1>{product.title}</h1>
         <p>{product.description}</p>
         <h3>{product.price} kr</h3>
-        <div className="buttoncontainer">
-          <button
-            className="ShopButton"
-            onClick={() => {
-              addToCart(product);
-              setAddedToCart(true);
-            }}
-          >
-            {addedToCart ? "Tillagd i varukorgen" : "Lägg till i varukorg +"}
-          </button>
-        </div>
+        <button className="ShopButton" onClick={() => handleAddToCart(product)}>
+          {addedToCart ? "Tillagd i varukorgen" : "Lägg till i varukorg +"}
+        </button>
       </div>
     </div>
   );
