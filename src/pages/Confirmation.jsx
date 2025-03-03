@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "/src/confirmation.css";
+import Button from "../components/Button";
 
 const Confirmation = () => {
   const location = useLocation();
@@ -80,10 +81,13 @@ const Confirmation = () => {
       <p>
         <strong>Total: {total} SEK</strong>
       </p>
+
       {cart.length > 0 && (
-        <button className="redButton" onClick={handleCheckout}>
-          Stäng
-        </button>
+        <section className="confirmationButtonWrap">
+          <Button className="redButton" onClick={handleCheckout} to="/">
+            Stäng
+          </Button>
+        </section>
       )}
     </div>
   );

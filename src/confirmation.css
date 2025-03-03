@@ -4,7 +4,7 @@
   width: 100%;
   max-width: 1000px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin: auto;
+  margin: -12.5rem auto 0 auto;
 }
 
 .user {
@@ -77,9 +77,16 @@
   height: auto;
 }
 
+.confirmationButtonWrap {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
 @media (min-width: 768px) {
   .confirmation {
     border-radius: 8px;
+    margin: -8rem auto 2rem auto;
   }
 
   .product-info {
