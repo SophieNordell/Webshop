@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const useCartActions = () => {
+const useCartActions = (setCartCount) => {
   const [cart, setCart] = useState(() => {
     try {
       const savedCart = localStorage.getItem("cart");

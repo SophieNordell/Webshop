@@ -25,7 +25,10 @@ const App = () => {
     }
   });
 
+  const [cartCount, setCartCount] = useState(0);
+
   useEffect(() => {
+    setCartCount(cart.reduce((total, item) => total + item.quantity, 0));
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
 
@@ -38,12 +41,7 @@ const App = () => {
           element={
             <>
               <Logotyp />
-              <Navbar
-                cartCount={cart.reduce(
-                  (total, item) => total + item.quantity,
-                  0
-                )}
-              />
+              <Navbar cartCount={cartCount} />
 
               <Routes>
                 <Route
@@ -57,7 +55,7 @@ const App = () => {
                   path="/product/:id"
                   element={<ProductPage setCart={setCart} cart={cart} />}
                 />
-                <Route path="/cart" element={<Cart />} />
+                <Route path="/cart" element={<Cart cart={cart} />} />
               </Routes>
               <Footer />
             </>

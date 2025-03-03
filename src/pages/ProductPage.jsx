@@ -14,15 +14,6 @@ const ProductPage = ({ setCart, cart }) => {
     window.history.back();
   };
 
-  /*   const updateCartCount = () => {
-    const savedCart = JSON.parse(localStorage.getItem("cart")) || [];
-    const newCartCount = savedCart.reduce(
-      (acc, item) => acc + item.quantity,
-      0
-    );
-    setCartCount(newCartCount);
-  }; */
-
   const handleAddToCart = (product) => {
     setCart((prevCart) => {
       const itemExists = prevCart.find((item) => item.id === product.id);
@@ -37,8 +28,6 @@ const ProductPage = ({ setCart, cart }) => {
         return [...prevCart, { ...product, quantity: 1 }];
       }
     });
-    setAddedToCart(true);
-    setTimeout(() => setAddedToCart(false), 1000);
   };
 
   useEffect(() => {
