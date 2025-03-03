@@ -9,7 +9,7 @@ h1 {
 }
 
 .cartWrap h3 {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
 }
 .cartWrap {
   max-width: 1000px;
@@ -45,6 +45,8 @@ h1 {
   background: #eae5dc;
   border: none;
   cursor: pointer;
+  font-size: 1.2rem;
+  margin: 0.8rem;
 }
 
 .cartWrap .productImage {
@@ -68,13 +70,18 @@ h1 {
   width: 50%;
   text-align: left;
   flex-grow: 1;
-  margin-top: 1rem;
+}
+
+.cartFooter {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+  gap: 1rem;
 }
 
 .cartNav {
   display: flex;
   justify-content: center;
-  margin-top: 2rem;
 }
 
 .cartNav button {
@@ -110,5 +117,12 @@ h1 {
   }
   .cartNav {
     justify-content: end;
+  }
+  .cartFooter {
+    flex-direction: row;
+  }
+  .counterButton {
+    font-size: 1rem;
+    margin: 0.2rem;
   }
 }
