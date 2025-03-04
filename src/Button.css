@@ -1,21 +1,9 @@
+button {
+  border: none;
+}
+
+.redButton,
 .greyButton {
-  background: #eae5dc;
-  text-decoration: none;
-  padding: 0.5rem 1rem;
-  color: #000;
-  border-radius: 5px;
-  min-width: 150px;
-  line-height: 130%;
-}
-
-.greyButton:hover {
-  text-decoration: none;
-}
-
-.redButton {
-  background: #ba3656;
-  color: #fff;
-
   cursor: pointer;
   text-decoration: none;
   padding: 0.5rem 1rem;
@@ -24,10 +12,30 @@
   display: block;
   width: 100%;
   line-height: 130%;
+  transition: background 0.3s ease-in-out;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.greyButton {
+  background: #eae5dc;
+  color: #000;
+}
+
+.greyButton:hover {
+  text-decoration: none;
+  background: #e2dbc9;
+  color: #000;
+}
+
+.redButton {
+  background: #d94a6e;
+  color: #fff;
 }
 .redButton:hover {
-  color: #e8c0ca;
   text-decoration: none;
+  background: #ba3656;
+  color: #fff;
 }
 .button-container {
   flex-direction: column;
