@@ -7,14 +7,14 @@ const Button = ({ children, onClick, className = "", to }) => {
 
   if (to) {
     return (
-      <Link to={to} className={buttonClass}>
+      <Link to={to} className={buttonClass} onClick={onClick}>
         {children}
       </Link>
     );
   }
 
   return (
-    <button type="" className={buttonClass} onClick={onClick}>
+    <button type="button" className={buttonClass} onClick={onClick}>
       {children}
     </button>
   );
