@@ -32,14 +32,16 @@ const App = () => {
   return (
     <>
       <Routes>
-        <Route path="/confirmation" element={<Confirmation />} />
+        <Route
+          path="/confirmation"
+          element={<Confirmation setCart={setCart} />}
+        />
         <Route
           path="/*"
           element={
             <>
               <Logotyp />
               <Navbar cartCount={cartCount} />
-
               <Routes>
                 <Route
                   path="/products"

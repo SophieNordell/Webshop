@@ -3,15 +3,16 @@ import { useLocation, useNavigate } from "react-router-dom";
 import "/src/confirmation.css";
 import Button from "../components/Button";
 
-const Confirmation = () => {
+const Confirmation = ({ setCart }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const { customerData } = location.state || {};
 
-  const [cart, setCart] = useState([]);
+  const [cart, setCartLocal] = useState([]);
   const [orderNumber, setOrderNumber] = useState("");
 
   const handleCheckout = () => {
+    setCart([]);
     localStorage.removeItem("cart");
     navigate("/");
   };
@@ -21,11 +22,11 @@ const Confirmation = () => {
     setOrderNumber(randomOrderNumber);
 
     if (location.state?.cart) {
-      setCart(location.state.cart);
+      setCartLocal(location.state.cart);
     } else {
       const storedCart = localStorage.getItem("cart");
       if (storedCart) {
-        setCart(JSON.parse(storedCart));
+        setCartLocal(JSON.parse(storedCart));
       }
     }
   }, [location.state]);
