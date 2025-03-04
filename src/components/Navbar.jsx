@@ -1,6 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 import "../Navbar.css";
-import cart from "../images/cart-icon.png";
+import cartIcon from "../images/cart-icon.png";
 
 const Navbar = ({ cartCount }) => {
   return (
@@ -22,7 +22,7 @@ const Navbar = ({ cartCount }) => {
             </NavLink>
           </div>
           <Link to="/Cart" className="cart-button">
-            <img src={cart} alt="Varukorg-ikon" className="cart-icon" />
+            <img src={cartIcon} alt="Varukorg-ikon" className="cart-icon" />
             <p className="cart-number">{cartCount}</p>
           </Link>
         </div>

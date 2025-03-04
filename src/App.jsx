@@ -1,5 +1,3 @@
-// In App.js
-
 import "./App.css";
 import ProductPage from "./pages/ProductPage";
 import UserInputs from "./pages/UserInputs";
@@ -29,6 +27,8 @@ const App = () => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
 
+  const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+
   return (
     <>
       <Routes>
@@ -38,7 +38,8 @@ const App = () => {
           element={
             <>
               <Logotyp />
-              <Navbar cartCount={cart.length} />
+              <Navbar cartCount={cartCount} />
+
               <Routes>
                 <Route
                   path="/products"
@@ -51,7 +52,10 @@ const App = () => {
                   path="/product/:id"
                   element={<ProductPage setCart={setCart} cart={cart} />}
                 />
-                <Route path="/cart" element={<Cart />} />
+                <Route
+                  path="/cart"
+                  element={<Cart cart={cart} setCart={setCart} />}
+                />
               </Routes>
               <Footer />
             </>
