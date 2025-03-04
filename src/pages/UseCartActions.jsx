@@ -16,44 +16,40 @@ const useCartActions = () => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
 
-  const updateCart = (newCart) => {
-    setCart([...newCart]);
-  };
-
   const addToCart = (newItem) => {
-    updateCart(
-      cart.some((item) => item.id === newItem.id)
-        ? cart.map((item) =>
-            item.id === newItem.id
-              ? { ...item, quantity: item.quantity + 1 }
-              : item
-          )
-        : [...cart, { ...newItem, quantity: 1 }]
-    );
+    setCart((prevCart) => {
+      const itemExists = prevCart.some((item) => item.id === newItem.id);
+      if (itemExists) {
+        return prevCart.map((item) =>
+          item.id === newItem.id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        );
+      } else {
+        return [...prevCart, { ...newItem, quantity: 1 }];
+      }
+    });
   };
 
   const increaseQuantity = (id) => {
-    updateCart(
-      cart.map((item) =>
+    setCart((prevCart) =>
+      prevCart.map((item) =>
         item.id === id ? { ...item, quantity: item.quantity + 1 } : item
       )
     );
   };
-
   const decreaseQuantity = (id) => {
-    updateCart(
-      cart
-        .map((item) =>
-          item.id === id && item.quantity > 1
-            ? { ...item, quantity: item.quantity - 1 }
-            : item
-        )
-        .filter((item) => item.quantity > 0)
+    setCart((prevCart) =>
+      prevCart.map((item) =>
+        item.id === id && item.quantity > 1
+          ? { ...item, quantity: item.quantity - 1 }
+          : item
+      )
     );
   };
 
   const removeItem = (id) => {
-    updateCart(cart.filter((item) => item.id !== id));
+    setCart((prevCart) => prevCart.filter((item) => item.id !== id));
   };
 
   const totalSum = cart.reduce(
