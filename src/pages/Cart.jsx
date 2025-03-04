@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import "../Cart.css";
-import CartItem from "./CartItem";
-import CartSummary from "./CartSummary";
+import CartItem from "../components/CartItem";
+import CartSummary from "../components/CartSummary";
 
 const Cart = ({ cart, setCart }) => {
   const increaseQuantity = (id) => {

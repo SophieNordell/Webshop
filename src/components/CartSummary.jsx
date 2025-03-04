@@ -1,4 +1,4 @@
-import Button from "../components/Button";
+import Button from "./Button";
 
 const CartSummary = ({ cart, totalSum, handleProceed }) => {
   const isCartEmpty = cart.length === 0;
