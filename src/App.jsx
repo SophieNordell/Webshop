@@ -1,5 +1,3 @@
-// In App.js
-
 import "./App.css";
 import ProductPage from "./pages/ProductPage";
 import UserInputs from "./pages/UserInputs";
@@ -25,12 +23,11 @@ const App = () => {
     }
   });
 
-  const [cartCount, setCartCount] = useState(0);
-
   useEffect(() => {
-    setCartCount(cart.reduce((total, item) => total + item.quantity, 0));
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
+
+  const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
 
   return (
     <>
@@ -55,7 +52,10 @@ const App = () => {
                   path="/product/:id"
                   element={<ProductPage setCart={setCart} cart={cart} />}
                 />
-                <Route path="/cart" element={<Cart cart={cart} />} />
+                <Route
+                  path="/cart"
+                  element={<Cart cart={cart} setCart={setCart} />}
+                />
               </Routes>
               <Footer />
             </>
