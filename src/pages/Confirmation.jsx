@@ -1,19 +1,21 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "/src/confirmation.css";
-import Button from "../components/Button";
+import Button from "../button/Button";
+import { useCart } from "../components/cartContext"; // Importera CartContext
 
 const Confirmation = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { customerData } = location.state || {};
+  const { clearCart } = useCart(); // Använd clearCart från CartContext
 
   const [cart, setCart] = useState([]);
   const [orderNumber, setOrderNumber] = useState("");
 
   const handleCheckout = () => {
-    localStorage.removeItem("cart");
-    navigate("/");
+    clearCart(); // Töm varukorgen när användaren slutför köpet
+    navigate("/"); // Navigera tillbaka till startsidan eller annan sida
   };
 
   useEffect(() => {
@@ -84,7 +86,7 @@ const Confirmation = () => {
 
       {cart.length > 0 && (
         <section className="confirmationButtonWrap">
-          <Button className="redButton" onClick={handleCheckout} to="/">
+          <Button className="redButton" onClick={handleCheckout}>
             Stäng
           </Button>
         </section>
