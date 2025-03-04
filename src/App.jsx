@@ -11,7 +11,6 @@ import { Route, Routes } from "react-router-dom";
 import Footer from "./components/Footer";
 import Logotyp from "./components/Logotyp";
 import { useState, useEffect } from "react";
-import CartProvider from "./components/cartContext";
 
 const App = () => {
   const [cart, setCart] = useState(() => {
@@ -61,58 +60,58 @@ const App = () => {
 
   return (
     <>
-      <CartProvider>
-        <Routes>
-          <Route path="/confirmation" element={<Confirmation />} />
-          <Route
-            path="/*"
-            element={
-              <>
-                <Logotyp />
-                <Navbar cartCount={cartCount} />
-
-                <Routes>
-                  <Route
-                    path="/products"
-                    element={
-                      <Products
-                        cart={cart}
-                        setCart={setCart}
-                        addToCart={addToCart}
-                      />
-                    }
-                  />
-                  <Route path="/userInputs" element={<UserInputs />} />
-                  <Route path="/productCard" element={<ProductCard />} />
-                  <Route path="/" element={<Home />} />
-                  <Route
-                    path="/product/:id"
-                    element={
-                      <ProductPage
-                        setCart={setCart}
-                        cart={cart}
-                        addToCart={addToCart}
-                      />
-                    }
-                  />
-                  <Route
-                    path="/cart"
-                    element={
-                      <Cart
-                        cart={cart}
-                        setCart={setCart}
-                        removeFromCart={removeFromCart}
-                        updateQuantity={updateQuantity}
-                      />
-                    }
-                  />
-                </Routes>
-                <Footer />
-              </>
-            }
-          />
-        </Routes>
-      </CartProvider>
+      <Routes>
+        <Route
+          path="/confirmation"
+          element={<Confirmation setCart={setCart} cart={cart} />}
+        />
+        <Route
+          path="/*"
+          element={
+            <>
+              <Logotyp />
+              <Navbar cartCount={cartCount} />
+              <Routes>
+                <Route
+                  path="/products"
+                  element={
+                    <Products
+                      cart={cart}
+                      setCart={setCart}
+                      addToCart={addToCart}
+                    />
+                  }
+                />
+                <Route path="/userInputs" element={<UserInputs />} />
+                <Route path="/productCard" element={<ProductCard />} />
+                <Route path="/" element={<Home />} />
+                <Route
+                  path="/product/:id"
+                  element={
+                    <ProductPage
+                      setCart={setCart}
+                      cart={cart}
+                      addToCart={addToCart}
+                    />
+                  }
+                />
+                <Route
+                  path="/cart"
+                  element={
+                    <Cart
+                      cart={cart}
+                      setCart={setCart}
+                      removeFromCart={removeFromCart}
+                      updateQuantity={updateQuantity}
+                    />
+                  }
+                />
+              </Routes>
+              <Footer />
+            </>
+          }
+        />
+      </Routes>
     </>
   );
 };

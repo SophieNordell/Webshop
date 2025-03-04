@@ -1,58 +1,46 @@
-import React, { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "/src/confirmation.css";
 import Button from "../button/Button";
-import { useCart } from "../components/cartContext";
 
-const Confirmation = () => {
+const Confirmation = ({ setCart, cart }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const { customerData } = location.state || {};
-  const { clearCart } = useCart();
-
-  const [cart, setCart] = useState([]);
-  const [orderNumber, setOrderNumber] = useState("");
 
   const handleCheckout = () => {
-    clearCart();
     localStorage.removeItem("cart");
+    setCart([]);
     navigate("/");
   };
 
   useEffect(() => {
-    const randomOrderNumber = Math.floor(100000 + Math.random() * 900000);
-    setOrderNumber(randomOrderNumber);
-
-    if (location.state?.cart) {
-      setCart(location.state.cart);
-    } else {
-      const storedCart = localStorage.getItem("cart");
-      if (storedCart) {
-        setCart(JSON.parse(storedCart));
-      }
+    const cartData = location.state?.cart || localStorage.getItem("cart");
+    if (cartData) {
+      setCart(JSON.parse(cartData));
     }
-  }, [location.state]);
+  }, [location.state, setCart]);
 
   const total = Math.round(
     cart.reduce((sum, item) => sum + item.price * item.quantity, 0)
   );
 
   return (
-    <main className="confirmation">
+    <div className="confirmation">
       <img
         src="/src/images/mangosteen-logo.png"
         alt="Mangosteen Logo"
         className="logo"
       />
 
-      <section className="user">
+      <div className="user">
         <h3>Tack för ditt köp, {customerData?.name || "Kund"}!</h3>
-
-        <p>Ordernummer: #{orderNumber}</p>
+        <p>Ordernummer: #{Math.floor(100000 + Math.random() * 900000)}</p>
         <p>Kvitto finns på: {customerData?.email || "ej angiven e-post"}</p>
-      </section>
+      </div>
+
       <h3>Dina varor:</h3>
-      <section className="confirmation-card">
+      <div className="confirmation-card">
         <ul>
           {cart.length > 0 ? (
             cart.map((item, index) => (
@@ -79,7 +67,7 @@ const Confirmation = () => {
             <li>Inga varor i varukorgen.</li>
           )}
         </ul>
-      </section>
+      </div>
 
       <p>
         <strong>Total: {total} SEK</strong>
@@ -87,12 +75,12 @@ const Confirmation = () => {
 
       {cart.length > 0 && (
         <section className="confirmationButtonWrap">
-          <Button className="redButton" onClick={handleCheckout}>
+          <Button className="redButton" onClick={handleCheckout} to="/">
             Stäng
           </Button>
         </section>
       )}
-    </main>
+    </div>
   );
 };
 
