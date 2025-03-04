@@ -38,8 +38,9 @@ const UserInputs = ({ onSubmit = () => {} }) => {
     <form className="user-form" onSubmit={handleSubmit}>
       <h2>Leverans- och Fakturaadress</h2>
 
-      <label>Namn</label>
+      <label htmlFor="name">Namn</label>
       <input
+        id="name"
         type="text"
         name="name"
         placeholder="Namn"
@@ -48,8 +49,9 @@ const UserInputs = ({ onSubmit = () => {} }) => {
         onChange={handleChange}
       />
 
-      <label>Email</label>
+      <label htmlFor="email">Email</label>
       <input
+        id="email"
         type="email"
         name="email"
         placeholder="Email"
@@ -58,8 +60,9 @@ const UserInputs = ({ onSubmit = () => {} }) => {
         onChange={handleChange}
       />
 
-      <label>Adress</label>
+      <label htmlFor="adress">Adress</label>
       <input
+        id="adress"
         type="text"
         name="address"
         placeholder="Adress"
@@ -68,8 +71,9 @@ const UserInputs = ({ onSubmit = () => {} }) => {
         onChange={handleChange}
       />
 
-      <label>Postnummer</label>
+      <label htmlFor="postnummer">Postnummer</label>
       <input
+        id="postnummer"
         type="text"
         name="postalCode"
         placeholder="Postnummer"
@@ -78,8 +82,9 @@ const UserInputs = ({ onSubmit = () => {} }) => {
         onChange={handleChange}
       />
 
-      <label>Postadress</label>
+      <label htmlFor="postadress">Postadress</label>
       <input
+        id="postadress"
         type="text"
         name="city"
         placeholder="Postadress"
