@@ -15,6 +15,7 @@ const Confirmation = () => {
 
   const handleCheckout = () => {
     clearCart();
+    localStorage.removeItem("cart");
     navigate("/");
   };
 
