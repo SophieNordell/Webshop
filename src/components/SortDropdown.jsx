@@ -1,7 +1,12 @@
 const SortDropdown = ({ sortOrder, onSortChange }) => {
   return (
     <div className="dropdown">
-      <select id="sort-select" onChange={onSortChange} value={sortOrder}>
+      <select
+        id="sort-select"
+        onChange={onSortChange}
+        value={sortOrder}
+        aria-label="Sorteringsalternativ"
+      >
         <option value="" disabled>
           Sortera efter pris
         </option>

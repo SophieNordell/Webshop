@@ -59,7 +59,7 @@ const ProductPage = ({ setCart, cart }) => {
       <section className="productInfo">
         <h1>{product.title}</h1>
         <p>{product.description}</p>
-        <h3>{product.price} kr</h3>
+        <h2>{product.price} kr</h2>
         <button className="ShopButton" onClick={() => handleAddToCart(product)}>
           {addedToCart ? "Tillagd i varukorgen" : "Lägg till i varukorg +"}
         </button>

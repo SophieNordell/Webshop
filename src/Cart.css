@@ -124,14 +124,8 @@ h1 {
 }
 
 .redButton.disabled {
-  background-color: #d8d8d8;
-  color: #aaa;
-  cursor: not-allowed;
-}
-
-.redButton:disabled {
-  background-color: #d8d8d8;
-  color: #aaa;
+  background-color: #f3f3f3;
+  color: #595959;
   cursor: not-allowed;
 }
 
