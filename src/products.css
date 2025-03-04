@@ -154,6 +154,7 @@
   font-size: 1.5rem;
   margin-bottom: 10px;
   color: #333;
+  text-align: center;
 }
 
 .modal-content p {
@@ -162,28 +163,9 @@
   margin-bottom: 20px;
 }
 
-.modal-content button {
-  background: green;
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  margin: 5px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: background 0.3s ease-in-out;
-}
-
-.modal-content button:hover {
-  background: lightgreen;
-}
-
-.modal-content button:first-of-type {
-  background: #ba3656;
-}
-
-.modal-content button:first-of-type:hover {
-  background: #d94a6e;
+.buttonNav {
+  display: flex;
+  justify-content: space-between;
 }
 
 @keyframes fadeIn {

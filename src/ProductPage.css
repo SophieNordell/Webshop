@@ -2,6 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
 .productImage {
@@ -30,7 +31,6 @@
 }
 
 .productInfo h1 {
-  font-size: 2rem;
   margin-bottom: 2rem;
 }
 
@@ -38,22 +38,17 @@
   max-width: 500px;
 }
 
+.productImage {
+  max-width: 90%;
+  padding: 20px;
+  margin: 20px;
+  margin-top: 100px;
+}
+
 .productInfo h3 {
   font-size: 1.5rem;
   font-weight: bold;
   margin: 1rem 0;
-}
-
-.ShopButton {
-  padding: 10px;
-  background-color: #9f3650;
-  color: white;
-  border: none;
-  cursor: pointer;
-  font-size: 1rem;
-  margin-top: 15px;
-  border-radius: 8px;
-  padding: 13px;
 }
 
 .ShopButton:hover {
@@ -79,18 +74,15 @@
   color: #6c6c6c;
 }
 
-@media (max-width: 768px) {
+@media (min-width: 768px) {
   .productPage {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
   }
 
   .productImage {
-    max-width: 90%;
-    padding: 20px;
-    margin: 20px;
-    margin-top: 100px;
+    flex: 1;
+    max-width: 500px;
+    padding: 5rem;
   }
 
   .productInfo {
@@ -100,23 +92,21 @@
   }
 
   .productInfo h1 {
-    font-size: 1.5rem;
-    margin-left: 20px;
+    font-size: 1.8rem;
+    line-height: 150%;
   }
 
   .productInfo p {
     font-size: 1rem;
-    margin: 20px;
   }
 
   .productInfo h3 {
     font-size: 1.2rem;
-    margin: 20px;
   }
 
   .ShopButton {
     padding: 20px;
-    margin: 20px;
+
     font-size: 1.2rem;
     margin-bottom: 30px;
   }

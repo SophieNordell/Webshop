@@ -55,8 +55,9 @@ h2 {
 }
 
 h4 {
-  font-weight: 800;
+  font-weight: 500;
   font-family: "Literata", serif;
+  font-size: 1.2rem;
 }
 
 @keyframes logo-spin {
