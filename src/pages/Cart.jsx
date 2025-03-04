@@ -4,38 +4,53 @@ import CartItem from "../components/CartItem";
 import CartSummary from "../components/CartSummary";
 
 const Cart = ({ cart, setCart }) => {
+  useEffect(() => {
+    const savedCart = localStorage.getItem("cart");
+    if (savedCart) {
+      try {
+        setCart(JSON.parse(savedCart));
+      } catch (error) {
+        console.error("Error parsing cart from localStorage", error);
+      }
+    }
+  }, [setCart]);
+
   const increaseQuantity = (id) => {
-    setCart((prevCart) =>
-      prevCart.map((item) =>
+    setCart((prevCart) => {
+      const updatedCart = prevCart.map((item) =>
         item.id === id ? { ...item, quantity: item.quantity + 1 } : item
-      )
-    );
+      );
+      localStorage.setItem("cart", JSON.stringify(updatedCart));
+      return updatedCart;
+    });
   };
 
   const decreaseQuantity = (id) => {
-    setCart((prevCart) =>
-      prevCart
+    setCart((prevCart) => {
+      const updatedCart = prevCart
         .map((item) =>
           item.id === id && item.quantity > 1
             ? { ...item, quantity: item.quantity - 1 }
             : item
         )
-        .filter((item) => item.quantity > 0)
-    );
+        .filter((item) => item.quantity > 0);
+      localStorage.setItem("cart", JSON.stringify(updatedCart));
+      return updatedCart;
+    });
   };
 
   const removeItem = (id) => {
-    setCart((prevCart) => prevCart.filter((item) => item.id !== id));
+    setCart((prevCart) => {
+      const updatedCart = prevCart.filter((item) => item.id !== id);
+      localStorage.setItem("cart", JSON.stringify(updatedCart));
+      return updatedCart;
+    });
   };
 
   const totalSum = cart.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0
   );
-
-  useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cart));
-  }, [cart]);
 
   return (
     <div className="cartWrap">

@@ -1,75 +1,63 @@
-import React, { createContext, useState, useEffect, useContext } from "react";
+// src/components/cartContext.js
+
+import React, { createContext, useContext, useState, useEffect } from "react";
 
 const CartContext = createContext();
 
 export const useCart = () => useContext(CartContext);
 
 export const CartProvider = ({ children }) => {
-  const [cart, setCart] = useState([]);
-
-  useEffect(() => {
-    const savedCart = localStorage.getItem("cart");
-    if (savedCart) {
-      setCart(JSON.parse(savedCart));
+  const [cart, setCart] = useState(() => {
+    try {
+      const savedCart = localStorage.getItem("cart");
+      return savedCart ? JSON.parse(savedCart) : [];
+    } catch (error) {
+      console.error("Error reading cart from localStorage", error);
+      return [];
     }
-  }, []);
+  });
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
 
-  const addToCart = (item) => {
+  const addToCart = (product) => {
     setCart((prevCart) => {
-      const itemIndex = prevCart.findIndex(
-        (cartItem) => cartItem.id === item.id
-      );
-      if (itemIndex !== -1) {
-        prevCart[itemIndex].quantity += 1;
-        return [...prevCart];
+      const existingItem = prevCart.find((item) => item.id === product.id);
+      if (existingItem) {
+        return prevCart.map((item) =>
+          item.id === product.id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        );
+      } else {
+        return [...prevCart, { ...product, quantity: 1 }];
       }
-      return [...prevCart, { ...item, quantity: 1 }];
     });
   };
 
-  const removeItem = (id) => {
+  const removeFromCart = (id) => {
     setCart((prevCart) => prevCart.filter((item) => item.id !== id));
   };
 
-  const increaseQuantity = (id) => {
-    setCart((prevCart) =>
-      prevCart.map((item) =>
-        item.id === id ? { ...item, quantity: item.quantity + 1 } : item
-      )
-    );
-  };
-
-  const decreaseQuantity = (id) => {
+  const updateQuantity = (id, amount) => {
     setCart((prevCart) =>
       prevCart
         .map((item) =>
-          item.id === id && item.quantity > 1
-            ? { ...item, quantity: item.quantity - 1 }
-            : item
+          item.id === id ? { ...item, quantity: item.quantity + amount } : item
         )
         .filter((item) => item.quantity > 0)
     );
   };
 
-  const clearCart = () => {
-    setCart([]);
-    localStorage.removeItem("cart");
-  };
+  const totalSum = cart.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0
+  );
 
   return (
     <CartContext.Provider
-      value={{
-        cart,
-        addToCart,
-        removeItem,
-        increaseQuantity,
-        decreaseQuantity,
-        clearCart,
-      }}
+      value={{ cart, addToCart, removeFromCart, updateQuantity, totalSum }}
     >
       {children}
     </CartContext.Provider>
