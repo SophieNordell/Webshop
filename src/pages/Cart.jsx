@@ -2,17 +2,36 @@ import React, { useEffect } from "react";
 import "../Cart.css";
 import CartItem from "./CartItem";
 import CartSummary from "./CartSummary";
-import useCartActions from "./useCartActions";
 
-const Cart = () => {
-  const {
-    cart,
-    increaseQuantity,
-    decreaseQuantity,
-    removeItem,
-    totalSum,
-    handleProceed,
-  } = useCartActions();
+const Cart = ({ cart, setCart }) => {
+  const increaseQuantity = (id) => {
+    setCart((prevCart) =>
+      prevCart.map((item) =>
+        item.id === id ? { ...item, quantity: item.quantity + 1 } : item
+      )
+    );
+  };
+
+  const decreaseQuantity = (id) => {
+    setCart((prevCart) =>
+      prevCart
+        .map((item) =>
+          item.id === id && item.quantity > 1
+            ? { ...item, quantity: item.quantity - 1 }
+            : item
+        )
+        .filter((item) => item.quantity > 0)
+    );
+  };
+
+  const removeItem = (id) => {
+    setCart((prevCart) => prevCart.filter((item) => item.id !== id));
+  };
+
+  const totalSum = cart.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0
+  );
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
@@ -34,11 +53,7 @@ const Cart = () => {
           />
         ))
       )}
-      <CartSummary
-        cart={cart}
-        totalSum={totalSum}
-        handleProceed={handleProceed}
-      />
+      <CartSummary cart={cart} totalSum={totalSum} />
     </div>
   );
 };

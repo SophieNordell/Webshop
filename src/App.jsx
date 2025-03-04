@@ -11,6 +11,7 @@ import { Route, Routes } from "react-router-dom";
 import Footer from "./components/Footer";
 import Logotyp from "./components/Logotyp";
 import { useState, useEffect } from "react";
+import { CartProvider } from "./components/cartContext";
 
 const App = () => {
   const [cart, setCart] = useState(() => {
@@ -24,44 +25,51 @@ const App = () => {
   });
 
   useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cart));
-  }, [cart]);
+    const storedCart = localStorage.getItem("cart");
+    if (storedCart) {
+      setCart(JSON.parse(storedCart));
+    } else {
+      setCart([]);
+    }
+  }, []);
 
   const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
 
   return (
     <>
-      <Routes>
-        <Route path="/confirmation" element={<Confirmation />} />
-        <Route
-          path="/*"
-          element={
-            <>
-              <Logotyp />
-              <Navbar cartCount={cartCount} />
+      <CartProvider>
+        <Routes>
+          <Route path="/confirmation" element={<Confirmation />} />
+          <Route
+            path="/*"
+            element={
+              <>
+                <Logotyp />
+                <Navbar cartCount={cartCount} />
 
-              <Routes>
-                <Route
-                  path="/products"
-                  element={<Products cart={cart} setCart={setCart} />}
-                />
-                <Route path="/userInputs" element={<UserInputs />} />
-                <Route path="/productCard" element={<ProductCard />} />
-                <Route path="/" element={<Home />} />
-                <Route
-                  path="/product/:id"
-                  element={<ProductPage setCart={setCart} cart={cart} />}
-                />
-                <Route
-                  path="/cart"
-                  element={<Cart cart={cart} setCart={setCart} />}
-                />
-              </Routes>
-              <Footer />
-            </>
-          }
-        />
-      </Routes>
+                <Routes>
+                  <Route
+                    path="/products"
+                    element={<Products cart={cart} setCart={setCart} />}
+                  />
+                  <Route path="/userInputs" element={<UserInputs />} />
+                  <Route path="/productCard" element={<ProductCard />} />
+                  <Route path="/" element={<Home />} />
+                  <Route
+                    path="/product/:id"
+                    element={<ProductPage setCart={setCart} cart={cart} />}
+                  />
+                  <Route
+                    path="/cart"
+                    element={<Cart cart={cart} setCart={setCart} />}
+                  />
+                </Routes>
+                <Footer />
+              </>
+            }
+          />
+        </Routes>
+      </CartProvider>
     </>
   );
 };
