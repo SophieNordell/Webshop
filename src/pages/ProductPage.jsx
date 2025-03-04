@@ -3,12 +3,12 @@ import { useParams } from "react-router-dom";
 import FetchProducts from "../components/FetchProducts";
 import "../ProductPage.css";
 import Button from "../button/Button";
-import Modal from "../components/Modal"; // Importera Modal-komponenten
+import Modal from "../components/Modal";
 
 const ProductPage = ({ setCart }) => {
   const { id } = useParams();
   const { products, loading, error } = FetchProducts();
-  const [showModal, setShowModal] = useState(false); // State för modalen
+  const [showModal, setShowModal] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
 
   const product = products.find((p) => p.id === Number(id));
@@ -32,7 +32,6 @@ const ProductPage = ({ setCart }) => {
       }
     });
 
-    // Visa modalen när produkten läggs till i varukorgen
     setSelectedProduct(product);
     setShowModal(true);
   };
@@ -72,7 +71,6 @@ const ProductPage = ({ setCart }) => {
         </Button>
       </section>
 
-      {/* Modal som visas om `showModal` är true */}
       {showModal && selectedProduct && (
         <Modal
           title="Produkt tillagd!"
