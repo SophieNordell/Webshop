@@ -92,7 +92,7 @@ const UserInputs = ({ onSubmit = () => {} }) => {
         </Button>
 
         <Button className="redButton" onClick={handleSubmit} to="/">
-          Stäng
+          Bekräfta
         </Button>
       </div>
     </form>
