@@ -33,7 +33,7 @@ const Products = ({ cart, setCart }) => {
     const order = event.target.value;
     setSortOrder(order);
 
-    let sorted = [...filteredProducts];
+    const sorted = [...filteredProducts];
     if (order === "low-to-high") {
       sorted.sort((a, b) => a.price - b.price);
     } else if (order === "high-to-low") {

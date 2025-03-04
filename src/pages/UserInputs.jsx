@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "/src/UserInputs.css";
-import Button from "../components/Button";
+import Button from "../button/Button";
 
 const UserInputs = ({ onSubmit = () => {} }) => {
   const navigate = useNavigate();
