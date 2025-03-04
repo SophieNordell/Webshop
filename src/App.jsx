@@ -37,7 +37,6 @@ const App = () => {
 
   return (
     <>
-<<<<<<< HEAD
       <Routes>
         <Route
           path="/confirmation"
@@ -71,7 +70,7 @@ const App = () => {
           }
         />
       </Routes>
-=======
+
       <CartProvider>
         <Routes>
           <Route path="/confirmation" element={<Confirmation />} />
@@ -105,7 +104,6 @@ const App = () => {
           />
         </Routes>
       </CartProvider>
->>>>>>> 4f48f972e280214f870e01af5871de081a38a759
     </>
   );
 };
