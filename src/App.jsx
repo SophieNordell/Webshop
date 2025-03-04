@@ -11,7 +11,7 @@ import { Route, Routes } from "react-router-dom";
 import Footer from "./components/Footer";
 import Logotyp from "./components/Logotyp";
 import { useState, useEffect } from "react";
-import { CartProvider } from "./components/cartContext";
+import CartProvider from "./components/cartContext";
 
 const App = () => {
   const [cart, setCart] = useState(() => {
