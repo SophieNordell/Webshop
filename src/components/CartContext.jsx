@@ -1,3 +1,5 @@
+// src/components/cartContext.js
+
 import React, { createContext, useContext, useState, useEffect } from "react";
 
 const CartContext = createContext();
@@ -48,11 +50,6 @@ const CartProvider = ({ children }) => {
     );
   };
 
-  const clearCart = () => {
-    setCart([]);
-    localStorage.removeItem("cart");
-  };
-
   const totalSum = cart.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0
@@ -60,14 +57,7 @@ const CartProvider = ({ children }) => {
 
   return (
     <CartContext.Provider
-      value={{
-        cart,
-        addToCart,
-        removeFromCart,
-        updateQuantity,
-        clearCart,
-        totalSum,
-      }}
+      value={{ cart, addToCart, removeFromCart, updateQuantity, totalSum }}
     >
       {children}
     </CartContext.Provider>
