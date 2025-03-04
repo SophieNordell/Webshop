@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 const CartItem = ({ item, increaseQuantity, decreaseQuantity, removeItem }) => {
   return (
@@ -8,9 +7,7 @@ const CartItem = ({ item, increaseQuantity, decreaseQuantity, removeItem }) => {
         <img src={item.image} alt={item.title} />
       </div>
       <div className="productInfo">
-        <Link to={`/product/${item.id}`}>
-          <h3>{item.title}</h3>
-        </Link>
+        <h3>{item.title}</h3>
         <span className="price">{item.price} Kr</span>
       </div>
       <div className="productCounter">

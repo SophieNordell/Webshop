@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import "../Cart.css";
 import CartItem from "./CartItem";
 import CartSummary from "./CartSummary";
@@ -13,6 +13,10 @@ const Cart = () => {
     totalSum,
     handleProceed,
   } = useCartActions();
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
 
   return (
     <div className="cartWrap">
