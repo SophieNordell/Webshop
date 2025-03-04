@@ -56,14 +56,14 @@ const ProductPage = ({ setCart, cart }) => {
         <img src={product.image} alt={product.title} />
       </div>
 
-      <div className="productInfo">
+      <section className="productInfo">
         <h1>{product.title}</h1>
         <p>{product.description}</p>
         <h3>{product.price} kr</h3>
         <button className="ShopButton" onClick={() => handleAddToCart(product)}>
           {addedToCart ? "Tillagd i varukorgen" : "Lägg till i varukorg +"}
         </button>
-      </div>
+      </section>
     </div>
   );
 };

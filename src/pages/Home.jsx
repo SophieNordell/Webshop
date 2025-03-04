@@ -7,8 +7,8 @@ import "../Home.css";
 const Home = () => {
   return (
     <>
-      <div className="homepage-div">
-        <div className="categories-div">
+      <main className="homepage-div">
+        <section className="categories-div">
           <Link
             to="/products"
             state={{ category: "women's clothing" }}
@@ -45,8 +45,8 @@ const Home = () => {
             />
             <div className="accessories-text">Accessoarer</div>
           </Link>
-        </div>
-      </div>
+        </section>
+      </main>
     </>
   );
 };

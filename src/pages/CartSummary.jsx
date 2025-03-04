@@ -14,7 +14,7 @@ const CartSummary = ({ cart, totalSum, handleProceed }) => {
 
   return (
     <div className="cartFooter">
-      <div className="totalAmount">Totalt: {totalSum} SEK</div>
+      <p className="totalAmount">Totalt: {totalSum} SEK</p>
       <div className="cartNav">
         <Button className="greyButton" disabled={isCartEmpty} to="/products">
           Fortsätt handla
