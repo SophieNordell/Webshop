@@ -3,10 +3,10 @@ import { useParams } from "react-router-dom";
 import FetchProducts from "../components/FetchProducts";
 import "../ProductPage.css";
 
-const ProductPage = ({ setCart, cart }) => {
+const ProductPage = ({ setCart }) => {
   const { id } = useParams();
   const { products, loading, error } = FetchProducts();
-  const [addedToCart, setAddedToCart] = useState(false);
+  const [addedToCart] = useState(false);
 
   const product = products.find((p) => p.id === Number(id));
 
@@ -56,14 +56,14 @@ const ProductPage = ({ setCart, cart }) => {
         <img src={product.image} alt={product.title} />
       </div>
 
-      <div className="productInfo">
+      <section className="productInfo">
         <h1>{product.title}</h1>
         <p>{product.description}</p>
-        <h3>{product.price} kr</h3>
+        <h2>{product.price} kr</h2>
         <button className="ShopButton" onClick={() => handleAddToCart(product)}>
           {addedToCart ? "Tillagd i varukorgen" : "Lägg till i varukorg +"}
         </button>
-      </div>
+      </section>
     </div>
   );
 };
