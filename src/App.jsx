@@ -37,40 +37,6 @@ const App = () => {
 
   return (
     <>
-      <Routes>
-        <Route
-          path="/confirmation"
-          element={<Confirmation setCart={setCart} />}
-        />
-        <Route
-          path="/*"
-          element={
-            <>
-              <Logotyp />
-              <Navbar cartCount={cartCount} />
-              <Routes>
-                <Route
-                  path="/products"
-                  element={<Products cart={cart} setCart={setCart} />}
-                />
-                <Route path="/userInputs" element={<UserInputs />} />
-                <Route path="/productCard" element={<ProductCard />} />
-                <Route path="/" element={<Home />} />
-                <Route
-                  path="/product/:id"
-                  element={<ProductPage setCart={setCart} cart={cart} />}
-                />
-                <Route
-                  path="/cart"
-                  element={<Cart cart={cart} setCart={setCart} />}
-                />
-              </Routes>
-              <Footer />
-            </>
-          }
-        />
-      </Routes>
-
       <CartProvider>
         <Routes>
           <Route path="/confirmation" element={<Confirmation />} />
