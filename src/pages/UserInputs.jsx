@@ -19,6 +19,12 @@ const UserInputs = ({ onSubmit = () => {} }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (Object.values(formData).some((value) => value.trim() === "")) {
+      alert("Alla fält måste fyllas i för att kunna gå vidare!.");
+      return;
+    }
+
     console.log("Form submitted, navigating to confirmation");
     onSubmit(formData);
     navigate("/confirmation", { state: { customerData: formData } });
