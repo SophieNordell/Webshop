@@ -5,7 +5,7 @@ import CategoryFilter from "../components/CategoryFilter";
 import SortDropdown from "../components/SortDropdown";
 import ProductList from "../components/ProductList";
 
-const ProductPage = ({ cart, setCart }) => {
+const Products = ({ cart, setCart }) => {
   const location = useLocation();
   const initialCategory = location.state?.category || "all";
 
@@ -63,4 +63,4 @@ const ProductPage = ({ cart, setCart }) => {
   );
 };
 
-export default ProductPage;
+export default Products;
