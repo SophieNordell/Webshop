@@ -91,8 +91,8 @@ const UserInputs = ({ onSubmit = () => {} }) => {
           Fortsätt handla
         </Button>
 
-        <Button className="redButton" type="submit">
-          Slutför köp
+        <Button className="redButton" onClick={handleSubmit} to="/">
+          Stäng
         </Button>
       </div>
     </form>
