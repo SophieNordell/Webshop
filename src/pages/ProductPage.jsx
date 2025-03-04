@@ -3,10 +3,10 @@ import { useParams } from "react-router-dom";
 import FetchProducts from "../components/FetchProducts";
 import "../ProductPage.css";
 
-const ProductPage = ({ setCart, cart }) => {
+const ProductPage = ({ setCart }) => {
   const { id } = useParams();
   const { products, loading, error } = FetchProducts();
-  const [addedToCart, setAddedToCart] = useState(false);
+  const [addedToCart] = useState(false);
 
   const product = products.find((p) => p.id === Number(id));
 
