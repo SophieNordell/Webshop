@@ -31,17 +31,17 @@
 
 .productInfo h1 {
   font-size: 2rem;
+  margin-bottom: 2rem;
 }
 
 .productInfo p {
-  font-size: 1.2rem;
-  color: #555;
   max-width: 500px;
 }
 
 .productInfo h3 {
   font-size: 1.5rem;
   font-weight: bold;
+  margin: 1rem 0;
 }
 
 .ShopButton {

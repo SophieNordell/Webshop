@@ -1,8 +1,4 @@
-* {
-  box-sizing: border-box;
-}
-
-h1 {
+.cartWrap h1 {
   text-align: left;
   font-size: 2rem;
   margin-bottom: 2rem;
@@ -10,6 +6,7 @@ h1 {
 
 .cartWrap h3 {
   font-size: 1.3rem;
+  font-weight: 400;
 }
 .cartWrap {
   max-width: 1000px;
@@ -135,10 +132,6 @@ h1 {
 }
 
 @media only screen and (min-width: 520px) {
-  .cartProduct {
-    flex-direction: row;
-  }
-
   .productInfo {
     padding: 0 2rem;
   }
@@ -151,5 +144,11 @@ h1 {
   .counterButton {
     font-size: 1rem;
     margin: 0.2rem;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .cartProduct {
+    flex-direction: row;
   }
 }

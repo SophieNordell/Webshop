@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+.product-link:hover {
+  text-decoration: none;
+}
+
 .product-div {
   display: flex;
   justify-content: center;
