@@ -37,21 +37,21 @@ const Confirmation = () => {
   );
 
   return (
-    <div className="confirmation">
+    <main className="confirmation">
       <img
         src="/src/images/mangosteen-logo.png"
         alt="Mangosteen Logo"
         className="logo"
       />
 
-      <div className="user">
+      <section className="user">
         <h3>Tack för ditt köp, {customerData?.name || "Kund"}!</h3>
 
         <p>Ordernummer: #{orderNumber}</p>
         <p>Kvitto finns på: {customerData?.email || "ej angiven e-post"}</p>
-      </div>
+      </section>
       <h3>Dina varor:</h3>
-      <div className="confirmation-card">
+      <section className="confirmation-card">
         <ul>
           {cart.length > 0 ? (
             cart.map((item, index) => (
@@ -78,7 +78,7 @@ const Confirmation = () => {
             <li>Inga varor i varukorgen.</li>
           )}
         </ul>
-      </div>
+      </section>
 
       <p>
         <strong>Total: {total} SEK</strong>
@@ -91,7 +91,7 @@ const Confirmation = () => {
           </Button>
         </section>
       )}
-    </div>
+    </main>
   );
 };
 
