@@ -1,4 +1,4 @@
-import Button from "../components/Button";
+import Button from "../button/Button";
 
 const CartSummary = ({ cart, totalSum, handleProceed }) => {
   const isCartEmpty = cart.length === 0;
@@ -14,14 +14,9 @@ const CartSummary = ({ cart, totalSum, handleProceed }) => {
 
   return (
     <div className="cartFooter">
-      <div className="totalAmount">Totalt: {totalSum} SEK</div>
+      <p className="totalAmount">Totalt: {totalSum} SEK</p>
       <div className="cartNav">
-        <Button
-          className="greyButton"
-          onClick={handleProceedClick}
-          disabled={isCartEmpty}
-          to="/products"
-        >
+        <Button className="greyButton" disabled={isCartEmpty} to="/products">
           Fortsätt handla
         </Button>
 

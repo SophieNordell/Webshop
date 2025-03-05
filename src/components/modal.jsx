@@ -13,8 +13,13 @@ const Modal = ({ title, message, onClose, showCartButton = false }) => {
   return (
     <div className="modal-overlay">
       <div className="modal-content">
+        <p className="close-button" onClick={onClose}>
+          X
+        </p>
+
         <h2>{title}</h2>
         <p>{message}</p>
+
         <button onClick={onClose}>Fortsätt handla</button>
 
         {showCartButton && (

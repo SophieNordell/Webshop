@@ -1,36 +1,39 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import FetchProducts from "../components/FetchProducts";
 import CategoryFilter from "../components/CategoryFilter";
 import SortDropdown from "../components/SortDropdown";
 import ProductList from "../components/ProductList";
 
-const ProductPage = ({ cart, setCart }) => {
+const Products = ({ cart, setCart }) => {
   const location = useLocation();
   const initialCategory = location.state?.category || "all";
 
-  const { products, filteredProducts, setFilteredProducts } =
-    FetchProducts(initialCategory);
+  const { products } = FetchProducts();
 
   const [selectedCategory, setSelectedCategory] = useState(initialCategory);
+  const [filteredProducts, setFilteredProducts] = useState(products);
   const [sortOrder, setSortOrder] = useState("");
 
-  const filterByCategory = (category) => {
-    setSelectedCategory(category);
-    if (category === "all") {
+  useEffect(() => {
+    if (selectedCategory === "all") {
       setFilteredProducts(products);
     } else {
       setFilteredProducts(
-        products.filter((product) => product.category === category)
+        products.filter((product) => product.category === selectedCategory)
       );
     }
+  }, [selectedCategory, products]);
+
+  const filterByCategory = (category) => {
+    setSelectedCategory(category);
   };
 
   const handleSortChange = (event) => {
     const order = event.target.value;
     setSortOrder(order);
 
-    let sorted = [...filteredProducts];
+    const sorted = [...filteredProducts];
     if (order === "low-to-high") {
       sorted.sort((a, b) => a.price - b.price);
     } else if (order === "high-to-low") {
@@ -40,30 +43,6 @@ const ProductPage = ({ cart, setCart }) => {
     setFilteredProducts(sorted);
   };
 
-  /* const handleProductClick = (product) => {
-    console.log("Selected product:", product);
-
-    const savedCart = JSON.parse(localStorage.getItem("cart")) || [];
-
-    const existingProductIndex = savedCart.findIndex(
-      (item) => item.id === product.id
-    );
-
-    if (existingProductIndex !== -1) {
-      savedCart[existingProductIndex].quantity += 1;
-      console.log(
-        `Increased quantity for ${product.title}. New quantity: ${savedCart[existingProductIndex].quantity}`
-      );
-    } else {
-      savedCart.push({ ...product, quantity: 1 });
-      console.log(`Added new product: ${product.title}`);
-    }
-
-    localStorage.setItem("cart", JSON.stringify(savedCart));
-
-    console.log("Updated cart in localStorage:", savedCart);
-  };
- */
   return (
     <div className="product-div">
       <div className="header-container">
@@ -74,10 +53,14 @@ const ProductPage = ({ cart, setCart }) => {
         <SortDropdown sortOrder={sortOrder} onSortChange={handleSortChange} />
       </div>
       <div className="product-container">
-        <ProductList products={products} setCart={setCart} cart={cart} />
+        <ProductList
+          products={filteredProducts}
+          setCart={setCart}
+          cart={cart}
+        />
       </div>
     </div>
   );
 };
 
-export default ProductPage;
+export default Products;

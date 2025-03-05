@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Modal from "./modal";
+import Modal from "./Modal";
 import { Link } from "react-router-dom";
 
 const ProductList = ({ products, cart, setCart }) => {
@@ -7,7 +7,17 @@ const ProductList = ({ products, cart, setCart }) => {
   const [selectedProduct, setSelectedProduct] = useState(null);
 
   const handleAddToCart = (product) => {
-    const updatedCart = [...cart, product];
+    const updatedCart = [...cart];
+    const existingProductIndex = updatedCart.findIndex(
+      (item) => item.id === product.id
+    );
+
+    if (existingProductIndex !== -1) {
+      updatedCart[existingProductIndex].quantity += 1;
+    } else {
+      updatedCart.push({ ...product, quantity: 1 });
+    }
+
     setCart(updatedCart);
     localStorage.setItem("cart", JSON.stringify(updatedCart));
 
