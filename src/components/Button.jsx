@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "/src/button.css";
+import "./src/button.css";
 
 const Button = ({ children, onClick, className = "", to }) => {
   const buttonClass = `${className}`;

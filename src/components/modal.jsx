@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "/src/products.css";
-import Button from "../components/Button";
+import Button from "../components/Button.jsx";
 
 const Modal = ({ title, message, onClose, showCartButton = false }) => {
   const navigate = useNavigate();
