@@ -9,7 +9,7 @@ const ProductCard = ({ title, price, image, id, onAddToCart }) => {
   return (
     <div className="product-card">
       <img src={image} alt={title} className="product-image" />
-      <p className="product-price">{price} SEK</p>
+      <p className="product-price">{price} Kr</p>
       <button onClick={handleAddClick}>Lägg till</button>
     </div>
   );

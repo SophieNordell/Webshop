@@ -103,7 +103,7 @@ const UserInputs = ({ onSubmit = () => {} }) => {
         </Button>
 
         <Button className="redButton" onClick={handleSubmit} to="/">
-          Bekräfta
+          Slutför köp
         </Button>
       </div>
     </form>

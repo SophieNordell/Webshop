@@ -56,7 +56,7 @@ const Confirmation = ({ setCart, cart }) => {
                       <p>
                         <strong>{item.title}</strong>
                       </p>
-                      <p>Pris: {item.price} SEK</p>
+                      <p>Pris: {item.price} Kr</p>
                     </div>
                     <p className="quantity">{item.quantity} st</p>
                   </div>
@@ -70,7 +70,7 @@ const Confirmation = ({ setCart, cart }) => {
       </div>
 
       <p>
-        <strong>Total: {total} SEK</strong>
+        <strong>Total: {total} Kr</strong>
       </p>
 
       {cart.length > 0 && (
