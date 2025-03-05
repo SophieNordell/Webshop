@@ -112,8 +112,8 @@
   font-size: 0.9rem;
   padding: 0.5rem 1rem;
   background-color: #eae5dc;
-  border: 2px solid #ddd;
-  border-radius: 8px;
+  border: none;
+  border-radius: 4px;
   transition: all 0.3s ease;
 }
 
