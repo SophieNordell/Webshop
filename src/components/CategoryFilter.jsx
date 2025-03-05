@@ -1,9 +1,9 @@
 const CategoryFilter = ({ selectedCategory, onCategoryClick }) => {
   const categories = [
-    { name: "all", label: "ALL" },
-    { name: "women's clothing", label: "WOMENS" },
-    { name: "men's clothing", label: "MENS" },
-    { name: "jewelery", label: "ACCESSORIES" },
+    { name: "all", label: "ALLA" },
+    { name: "women's clothing", label: "DAM" },
+    { name: "men's clothing", label: "HERR" },
+    { name: "jewelery", label: "ACCESSOARER" },
   ];
 
   return (

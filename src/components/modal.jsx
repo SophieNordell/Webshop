@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "/src/products.css";
+import Button from "../button/Button";
 
 const Modal = ({ title, message, onClose, showCartButton = false }) => {
   const navigate = useNavigate();
@@ -20,11 +21,17 @@ const Modal = ({ title, message, onClose, showCartButton = false }) => {
         <h2>{title}</h2>
         <p>{message}</p>
 
-        <button onClick={onClose}>Fortsätt handla</button>
+        <div className="buttonNav">
+          <Button className="greyButton" onClick={onClose}>
+            Fortsätt handla
+          </Button>
 
-        {showCartButton && (
-          <button onClick={handleGoToCart}>Gå till varukorg</button>
-        )}
+          {showCartButton && (
+            <Button className="redButton" onClick={handleGoToCart}>
+              Gå till varukorg
+            </Button>
+          )}
+        </div>
       </div>
     </div>
   );
