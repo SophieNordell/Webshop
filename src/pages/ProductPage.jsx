@@ -2,11 +2,14 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import FetchProducts from "../components/FetchProducts";
 import "../ProductPage.css";
+import Button from "../button/Button";
+import Modal from "../components/Modal";
 
 const ProductPage = ({ setCart }) => {
   const { id } = useParams();
   const { products, loading, error } = FetchProducts();
-  const [addedToCart] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
 
   const product = products.find((p) => p.id === Number(id));
 
@@ -28,6 +31,9 @@ const ProductPage = ({ setCart }) => {
         return [...prevCart, { ...product, quantity: 1 }];
       }
     });
+
+    setSelectedProduct(product);
+    setShowModal(true);
   };
 
   useEffect(() => {
@@ -48,9 +54,9 @@ const ProductPage = ({ setCart }) => {
 
   return (
     <div className="productPage">
-      <button className="goBackButton" onClick={handleGoBack}>
+      <Button className="goBackButton greyButton" onClick={handleGoBack}>
         &lt; Gå tillbaka
-      </button>
+      </Button>
 
       <div className="productImage">
         <img src={product.image} alt={product.title} />
@@ -59,11 +65,23 @@ const ProductPage = ({ setCart }) => {
       <section className="productInfo">
         <h1>{product.title}</h1>
         <p>{product.description}</p>
-        <h2>{product.price} kr</h2>
-        <button className="ShopButton" onClick={() => handleAddToCart(product)}>
-          {addedToCart ? "Tillagd i varukorgen" : "Lägg till i varukorg +"}
-        </button>
+        <h3>{product.price} kr</h3>
+        <Button className="redButton" onClick={() => handleAddToCart(product)}>
+          Lägg till i varukorg
+        </Button>
       </section>
+
+      {showModal && selectedProduct && (
+        <Modal
+          title="Produkt tillagd!"
+          message={`${selectedProduct.title} har lagts till i varukorgen!`}
+          onClose={() => {
+            setShowModal(false);
+            setSelectedProduct(null);
+          }}
+          showCartButton={true}
+        />
+      )}
     </div>
   );
 };
