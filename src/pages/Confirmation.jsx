@@ -14,14 +14,8 @@ const Confirmation = ({ setCart }) => {
   const [orderNumber, setOrderNumber] = useState("");
 
   const handleCheckout = () => {
-<<<<<<< HEAD
-    setCart([]);
-    localStorage.removeItem("cart");
-    navigate("/");
-=======
     clearCart(); // Töm varukorgen när användaren slutför köpet
     navigate("/"); // Navigera tillbaka till startsidan eller annan sida
->>>>>>> 1e9d481b07493b66fd459777d3e3ac80bbcc1bf1
   };
 
   useEffect(() => {
