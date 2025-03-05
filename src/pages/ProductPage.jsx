@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import FetchProducts from "../components/FetchProducts";
 import "../ProductPage.css";
-import Button from "../button/Button";
+import Button from "../components/Button";
 import Modal from "../components/Modal";
 
 const ProductPage = ({ setCart }) => {

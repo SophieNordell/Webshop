@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "/src/confirmation.css";
-import Button from "../button/Button";
+import Button from "../components/Button";
 
 const Confirmation = ({ setCart, cart }) => {
   const location = useLocation();
