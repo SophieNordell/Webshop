@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import FetchProducts from "../components/FetchProducts";
 import "../ProductPage.css";
 import Button from "../components/Button";
-import Modal from "../components/Modal";
+import Modal from "../components/modal";
 
 const ProductPage = ({ setCart }) => {
   const { id } = useParams();
