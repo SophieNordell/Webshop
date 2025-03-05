@@ -5,7 +5,7 @@ import CategoryFilter from "../components/CategoryFilter";
 import SortDropdown from "../components/SortDropdown";
 import ProductList from "../components/ProductList";
 
-const ProductPage = () => {
+const ProductPage = ({ cart, setCart }) => {
   const location = useLocation();
   const initialCategory = location.state?.category || "all";
 
@@ -40,7 +40,7 @@ const ProductPage = () => {
     setFilteredProducts(sorted);
   };
 
-  const handleProductClick = (product) => {
+  /* const handleProductClick = (product) => {
     console.log("Selected product:", product);
 
     const savedCart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -63,7 +63,7 @@ const ProductPage = () => {
 
     console.log("Updated cart in localStorage:", savedCart);
   };
-
+ */
   return (
     <div className="product-div">
       <div className="header-container">
@@ -74,10 +74,7 @@ const ProductPage = () => {
         <SortDropdown sortOrder={sortOrder} onSortChange={handleSortChange} />
       </div>
       <div className="product-container">
-        <ProductList
-          products={filteredProducts}
-          onProductClick={handleProductClick}
-        />
+        <ProductList products={products} setCart={setCart} cart={cart} />
       </div>
     </div>
   );

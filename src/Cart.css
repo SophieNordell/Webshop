@@ -82,6 +82,8 @@ h1 {
 .cartNav {
   display: flex;
   justify-content: center;
+  gap: 1rem;
+  flex-direction: column;
 }
 
 .cartNav button {
@@ -101,6 +103,37 @@ h1 {
   margin-left: 1rem;
   cursor: pointer;
 }
+.redButton {
+  background-color: #d94a6e;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.redButton:hover {
+  background-color: #ba3656;
+}
+
+.redButton:active {
+  background-color: #a02c48;
+}
+
+.redButton.disabled {
+  background-color: #d8d8d8;
+  color: #aaa;
+  cursor: not-allowed;
+}
+
+.redButton:disabled {
+  background-color: #d8d8d8;
+  color: #aaa;
+  cursor: not-allowed;
+}
 
 .warningMessage {
   color: red;
@@ -116,7 +149,7 @@ h1 {
     padding: 0 2rem;
   }
   .cartNav {
-    justify-content: end;
+    flex-direction: row;
   }
   .cartFooter {
     flex-direction: row;

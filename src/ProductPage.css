@@ -53,6 +53,7 @@
   font-size: 1rem;
   margin-top: 15px;
   border-radius: 8px;
+  padding: 13px;
 }
 
 .ShopButton:hover {
@@ -64,12 +65,14 @@
   top: 20px;
   right: 20px;
   color: rgb(0, 0, 0);
-  background-color: transparent;
+  background-color: #eae5dc;
+  border-radius: 10px;
   border: none;
+  padding: 10px;
   font-size: 16px;
   cursor: pointer;
   margin-top: 10rem;
-  margin-right: 8rem;
+  margin-right: 2px;
 }
 
 .goBackButton:hover {
@@ -78,14 +81,16 @@
 
 @media (max-width: 768px) {
   .productPage {
+    display: flex;
     flex-direction: column;
     align-items: center;
   }
 
   .productImage {
     max-width: 90%;
-    margin-right: 0;
     padding: 20px;
+    margin: 20px;
+    margin-top: 100px;
   }
 
   .productInfo {
@@ -96,25 +101,33 @@
 
   .productInfo h1 {
     font-size: 1.5rem;
+    margin-left: 20px;
   }
 
   .productInfo p {
     font-size: 1rem;
+    margin: 20px;
   }
 
   .productInfo h3 {
     font-size: 1.2rem;
+    margin: 20px;
   }
 
   .ShopButton {
-    width: 100%;
-    padding: 12px 0;
+    padding: 20px;
+    margin: 20px;
     font-size: 1.2rem;
     margin-bottom: 30px;
   }
 
   .goBackButton {
-    margin-top: 100px;
-    margin-right: 0;
+    margin-top: 180px;
+    padding: 15px;
+  }
+
+  .buttoncontainer {
+    display: flex;
+    justify-content: center;
   }
 }

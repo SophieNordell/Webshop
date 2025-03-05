@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "/src/confirmation.css";
+import Button from "../components/Button";
 
 const Confirmation = () => {
   const location = useLocation();
@@ -12,22 +13,18 @@ const Confirmation = () => {
 
   const handleCheckout = () => {
     localStorage.removeItem("cart");
-    navigate("/");
+    navigate("/", { state: {} });
   };
 
   useEffect(() => {
     const randomOrderNumber = Math.floor(100000 + Math.random() * 900000);
     setOrderNumber(randomOrderNumber);
 
-    if (location.state?.cart) {
-      setCart(location.state.cart);
-    } else {
-      const storedCart = localStorage.getItem("cart");
-      if (storedCart) {
-        setCart(JSON.parse(storedCart));
-      }
+    const storedCart = localStorage.getItem("cart");
+    if (storedCart) {
+      setCart(JSON.parse(storedCart));
     }
-  }, [location.state]);
+  }, []);
 
   const total = Math.round(
     cart.reduce((sum, item) => sum + item.price * item.quantity, 0)
@@ -43,10 +40,10 @@ const Confirmation = () => {
 
       <div className="user">
         <h3>Tack för ditt köp, {customerData?.name || "Kund"}!</h3>
-
         <p>Ordernummer: #{orderNumber}</p>
         <p>Kvitto finns på: {customerData?.email || "ej angiven e-post"}</p>
       </div>
+
       <h3>Dina varor:</h3>
       <div className="confirmation-card">
         <ul>
@@ -80,10 +77,13 @@ const Confirmation = () => {
       <p>
         <strong>Total: {total} SEK</strong>
       </p>
+
       {cart.length > 0 && (
-        <button className="redButton" onClick={handleCheckout}>
-          Stäng
-        </button>
+        <section className="confirmationButtonWrap">
+          <Button className="redButton" onClick={handleCheckout}>
+            Stäng
+          </Button>
+        </section>
       )}
     </div>
   );

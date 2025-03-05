@@ -78,9 +78,16 @@
   height: auto;
 }
 
+.confirmationButtonWrap {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
 @media (min-width: 768px) {
   .confirmation {
     border-radius: 8px;
+    margin: -8rem auto 2rem auto;
   }
 
   .product-info {

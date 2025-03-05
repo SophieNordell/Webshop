@@ -1,3 +1,5 @@
+// In App.js
+
 import "./App.css";
 import ProductPage from "./pages/ProductPage";
 import UserInputs from "./pages/UserInputs";
@@ -9,16 +11,24 @@ import Products from "./pages/products";
 import Navbar from "./components/Navbar";
 import { Route, Routes } from "react-router-dom";
 import Footer from "./components/Footer";
-import { useState, useEffect } from "react";
 import Logotyp from "./components/Logotyp";
+import { useState, useEffect } from "react";
 
 const App = () => {
-  const [cartCount, setCartCount] = useState(0);
+  const [cart, setCart] = useState(() => {
+    try {
+      const savedCart = localStorage.getItem("cart");
+      return savedCart ? JSON.parse(savedCart) : [];
+    } catch (error) {
+      console.error("Error reading cart from localStorage", error);
+      return [];
+    }
+  });
 
   useEffect(() => {
-    const savedCart = JSON.parse(localStorage.getItem("cart")) || [];
-    setCartCount(savedCart.reduce((acc, item) => acc + item.quantity, 0));
-  }, []);
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
+
   return (
     <>
       <Routes>
@@ -28,17 +38,20 @@ const App = () => {
           element={
             <>
               <Logotyp />
-              <Navbar cartCount={cartCount} />
+              <Navbar cartCount={cart.length} />
               <Routes>
-                <Route path="/products" element={<Products />} />
+                <Route
+                  path="/products"
+                  element={<Products cart={cart} setCart={setCart} />}
+                />
                 <Route path="/userInputs" element={<UserInputs />} />
                 <Route path="/productCard" element={<ProductCard />} />
                 <Route path="/" element={<Home />} />
-                <Route path="/product/:id" element={<ProductPage />} />
                 <Route
-                  path="/cart"
-                  element={<Cart setCartCount={setCartCount} />}
+                  path="/product/:id"
+                  element={<ProductPage setCart={setCart} cart={cart} />}
                 />
+                <Route path="/cart" element={<Cart />} />
               </Routes>
               <Footer />
             </>
